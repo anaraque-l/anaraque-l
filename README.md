@@ -13,13 +13,7 @@ Me chamo Ana Raquel, curso Sistemas de Informação no CIN-UFPE e atualmente atu
             src="https://img.shields.io/badge/-LinkedIn-%230A66C2?style=for-the-badge&logo=linkedin&logoColor=white"
         />
     </a>
-    <a href="https://github.com/anaraque-l?tab=repositories&sort=stargazers">
-        <img 
-            alt="Total de estrelas" 
-            title="Total de estrelas GitHub" 
-            src="https://custom-icon-badges.demolab.com/github/stars/anaraque-l?color=55960c&style=for-the-badge&labelColor=488207&logo=star&label=estrelas"
-        />
-    </a>
+  
     <a href="https://github.com/anaraque-l?tab=followers">
         <img 
             alt="Seguidores" 
