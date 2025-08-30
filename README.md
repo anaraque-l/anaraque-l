@@ -2,7 +2,7 @@
 
 **Analista de Dados**
 
-Me chamo Ana Raquel, curso Sistemas de Informação no CIN-UFPE e atualmente atuo como analista de dados no CITi, a maior empresa júnior de tecnologia do Brasil. Sou apaixonada pelas possibilidades de inovação por meio da tecnologia e projetos interdisciplinares.
+Atualmente curso Sistemas de Informação no CIN-UFPE e  atuo como analista de dados no CITi, a maior empresa júnior de tecnologia do Brasil. Sou apaixonada pelas possibilidades de inovação por meio da tecnologia e projetos interdisciplinares.
 
 <p align="left">
   <a href="https://www.linkedin.com/in/ana-rodrigues-1b2844286/" target="_blank">
