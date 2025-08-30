@@ -12,6 +12,15 @@ Atualmente curso Sistemas de Informação no CIN-UFPE e  atuo como analista de d
       src="https://img.shields.io/badge/-LinkedIn-%230A66C2?style=for-the-badge&logo=linkedin&logoColor=white"
     />
   </a>
+  <a href="mailto:arrs@cin.ufpe.br">
+  <img 
+    alt="E-mail" 
+    title="Me mande um e-mail" 
+    src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"
+  />
+</a>
+  
+        
   </p>
 
 ---
