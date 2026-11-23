@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Squishy English Club - Revisão 4º Ano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SQUISHY ENGLISH CLUB - Revisão de Inglês 4º ano
+   Tema: Squishies + Disney + Aranhaverso + KATSEYE
+   ============================================================ */
+
+:root{
+  --pink:#ff9fcf;      --pink-soft:#ffe1f1;   --pink-deep:#e5569b;
+  --blue:#8fd3ff;      --blue-soft:#dcf1ff;   --blue-deep:#2f7fc4;
+  --lilac:#c9b1ff;     --lilac-soft:#ece2ff;  --lilac-deep:#7a53d6;
+  --mint:#9ef0c8;      --mint-soft:#ddfcec;   --mint-deep:#1f9c6a;
+  --butter:#ffe694;    --butter-soft:#fff6d9; --butter-deep:#c79206;
+  --coral:#ff9d8a;     --coral-deep:#e2573c;
+  --ink:#4a3b52;       --ink-soft:#7b6a84;
+  --white:#fffdfe;
+  --shadow:0 10px 0 rgba(122,83,214,.18), 0 16px 30px rgba(122,83,214,.16);
+  --shadow-sm:0 6px 0 rgba(122,83,214,.14), 0 10px 18px rgba(122,83,214,.12);
+  --radius:28px;
+  --font-fun:'Baloo 2','Comic Sans MS','Trebuchet MS',system-ui,sans-serif;
+  --font-body:'Nunito','Segoe UI',system-ui,-apple-system,sans-serif;
+}
+
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+
+html,body{margin:0; padding:0; min-height:100%; overflow-x:hidden; max-width:100%;}
+
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:
+    radial-gradient(1100px 700px at 8% -5%, #ffe8f5 0%, rgba(255,232,245,0) 60%),
+    radial-gradient(900px 650px at 102% 8%, #dff0ff 0%, rgba(223,240,255,0) 58%),
+    radial-gradient(900px 700px at 50% 108%, #e9e1ff 0%, rgba(233,225,255,0) 62%),
+    linear-gradient(160deg,#fff7fc 0%, #f4f9ff 45%, #fdf4ff 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+  padding-bottom:40px;
+}
+
+/* --- bolhas decorativas de fundo --- */
+.blob{position:fixed; border-radius:50%; filter:blur(6px); opacity:.35; pointer-events:none; z-index:0;
+  animation:floaty 9s ease-in-out infinite;}
+.blob.b1{width:150px;height:150px;background:var(--pink);top:12%;left:-50px;}
+.blob.b2{width:110px;height:110px;background:var(--blue);top:62%;right:-36px;animation-delay:-3s;}
+.blob.b3{width:90px;height:90px;background:var(--butter);top:34%;right:7%;animation-delay:-5s;}
+.blob.b4{width:120px;height:120px;background:var(--mint);bottom:6%;left:9%;animation-delay:-7s;}
+@keyframes floaty{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-26px) scale(1.07);}
+}
+
+.wrap{position:relative; z-index:2; max-width:860px; margin:0 auto; padding:18px 16px 0;}
+
+/* ============ SQUISH FÍSICA (squash & stretch) ============ */
+@keyframes squishPress{
+  0%{transform:scale(1,1);}
+  28%{transform:scale(1.16,.80) translateY(5px);}
+  55%{transform:scale(.93,1.10) translateY(-4px);}
+  78%{transform:scale(1.05,.96) translateY(1px);}
+  100%{transform:scale(1,1);}
+}
+@keyframes squishBig{
+  0%{transform:scale(1,1) rotate(0deg);}
+  22%{transform:scale(1.30,.70) rotate(-2deg) translateY(8px);}
+  48%{transform:scale(.84,1.20) rotate(2deg) translateY(-8px);}
+  70%{transform:scale(1.10,.92) rotate(-1deg);}
+  86%{transform:scale(.97,1.03) rotate(0deg);}
+  100%{transform:scale(1,1) rotate(0deg);}
+}
+@keyframes jellyWiggle{
+  0%,100%{transform:rotate(0deg) scale(1,1);}
+  25%{transform:rotate(-3deg) scale(1.03,.97);}
+  75%{transform:rotate(3deg) scale(.97,1.03);}
+}
+@keyframes shakeNo{
+  0%,100%{transform:translateX(0) scale(1,1);}
+  20%{transform:translateX(-9px) scale(1.04,.96);}
+  40%{transform:translateX(8px) scale(.97,1.03);}
+  60%{transform:translateX(-6px) scale(1.03,.97);}
+  80%{transform:translateX(4px);}
+}
+@keyframes popIn{
+  0%{transform:scale(.4) translateY(26px); opacity:0;}
+  60%{transform:scale(1.10) translateY(-6px); opacity:1;}
+  100%{transform:scale(1) translateY(0); opacity:1;}
+}
+@keyframes bounceSoft{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+@keyframes sparkleSpin{
+  0%{transform:rotate(0deg) scale(.9); opacity:.7;}
+  50%{transform:rotate(180deg) scale(1.15); opacity:1;}
+  100%{transform:rotate(360deg) scale(.9); opacity:.7;}
+}
+@keyframes slideUpFade{
+  from{opacity:0; transform:translateY(16px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.is-squishing{animation:squishPress .34s cubic-bezier(.34,1.56,.64,1) both;}
+.is-squishing-big{animation:squishBig .62s cubic-bezier(.34,1.56,.64,1) both;}
+
+/* ============ BOTÕES SQUISHY ============ */
+.sq{
+  font-family:var(--font-fun); font-weight:700; cursor:pointer;
+  border:4px solid var(--white); border-radius:22px;
+  padding:14px 24px; font-size:1.05rem; color:var(--ink);
+  background:linear-gradient(180deg,#ffffff 0%, var(--pink-soft) 100%);
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .18s ease, filter .18s ease;
+  transform-origin:center bottom;
+  user-select:none;
+}
+.sq:hover{filter:brightness(1.04);}
+.sq:focus-visible{outline:4px dashed var(--lilac-deep); outline-offset:3px;}
+.sq.primary{background:linear-gradient(180deg,#ffb7dc 0%, #ff86c2 100%); color:#5c1d40;
+  box-shadow:0 8px 0 #e5569b, 0 14px 22px rgba(229,86,155,.32);}
+.sq.blue{background:linear-gradient(180deg,#aee2ff 0%, #76c9ff 100%); color:#143f63;
+  box-shadow:0 8px 0 #2f7fc4, 0 14px 22px rgba(47,127,196,.3);}
+.sq.mint{background:linear-gradient(180deg,#b7f6d8 0%, #7eeab6 100%); color:#0c5c3d;
+  box-shadow:0 8px 0 #1f9c6a, 0 14px 22px rgba(31,156,106,.28);}
+.sq.lilac{background:linear-gradient(180deg,#ddcbff 0%, #bda2ff 100%); color:#3c1f78;
+  box-shadow:0 8px 0 #7a53d6, 0 14px 22px rgba(122,83,214,.3);}
+.sq.butter{background:linear-gradient(180deg,#fff0bb 0%, #ffdf84 100%); color:#6b4a02;
+  box-shadow:0 8px 0 #d9a310, 0 14px 22px rgba(217,163,16,.28);}
+.sq.ghost{background:rgba(255,255,255,.8); color:var(--ink-soft); box-shadow:var(--shadow-sm);}
+.sq.big{font-size:1.3rem; padding:18px 36px; border-radius:26px;}
+.sq[disabled]{opacity:.5; cursor:not-allowed; filter:grayscale(.3);}
+
+/* ============ CARTÕES ============ */
+.card{
+  background:rgba(255,255,255,.88);
+  border:5px solid var(--white);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+  backdrop-filter:blur(4px);
+  animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both;
+  transform-origin:center bottom;
+}
+
+/* ============ CABEÇALHO ============ */
+.topbar{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
+.logo{
+  font-family:var(--font-fun); font-weight:800; font-size:1.5rem; line-height:1.05;
+  background:linear-gradient(95deg,#e5569b,#7a53d6 45%,#2f7fc4);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  letter-spacing:.2px;
+}
+.logo small{display:block; font-family:var(--font-body); font-size:.68rem; font-weight:700;
+  color:var(--ink-soft); -webkit-text-fill-color:var(--ink-soft); letter-spacing:.6px; text-transform:uppercase;}
+.topbar .spacer{flex:1 1 auto;}
+.pill{
+  font-family:var(--font-fun); font-weight:700; font-size:.92rem;
+  background:var(--white); border:3px solid var(--butter); color:var(--ink);
+  border-radius:999px; padding:7px 15px; box-shadow:0 4px 0 rgba(217,163,16,.3);
+  display:inline-flex; align-items:center; gap:7px; white-space:nowrap;
+}
+.pill.p-blue{border-color:var(--blue); box-shadow:0 4px 0 rgba(47,127,196,.28);}
+.pill.p-pink{border-color:var(--pink); box-shadow:0 4px 0 rgba(229,86,155,.28);}
+
+.gear{
+  width:42px; height:42px; border-radius:50%; border:3px solid rgba(255,255,255,.9);
+  background:rgba(255,255,255,.55); cursor:pointer; font-size:1.1rem; line-height:1;
+  display:grid; place-items:center; color:var(--ink-soft); opacity:.55;
+  box-shadow:0 4px 0 rgba(122,83,214,.14); transition:opacity .2s ease, transform .2s ease;
+  transform-origin:center;
+}
+.gear:hover{opacity:1; transform:rotate(45deg);}
+
+/* ============ BARRA DE PROGRESSO ============ */
+.progress-shell{
+  height:24px; border-radius:999px; background:var(--white);
+  border:4px solid var(--white); box-shadow:inset 0 3px 8px rgba(122,83,214,.16);
+  overflow:hidden; margin:6px 0 4px;
+}
+.progress-fill{
+  height:100%; width:0%; border-radius:999px;
+  background:linear-gradient(90deg,#ffb7dc,#c9b1ff 50%,#8fd3ff);
+  background-size:200% 100%;
+  transition:width .55s cubic-bezier(.34,1.56,.64,1);
+  animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0% 0;}100%{background-position:200% 0;}}
+.progress-label{font-size:.78rem; font-weight:800; color:var(--ink-soft); text-align:right; letter-spacing:.4px;}
+
+/* ============ TELA DE BOAS-VINDAS ============ */
+.welcome{text-align:center; padding:26px 20px 30px;}
+.welcome h1{font-family:var(--font-fun); font-size:2.1rem; margin:8px 0 4px; line-height:1.12;
+  background:linear-gradient(95deg,#e5569b,#7a53d6 50%,#2f7fc4);
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+.welcome p.sub{margin:0 auto 18px; max-width:460px; font-weight:600; color:var(--ink-soft); font-size:1rem;}
+.hero-row{display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin:10px 0 18px;}
+.hero-row .squishy-mini{animation:bounceSoft 2.6s ease-in-out infinite;}
+.hero-row .squishy-mini:nth-child(2){animation-delay:.25s;}
+.hero-row .squishy-mini:nth-child(3){animation-delay:.5s;}
+.hero-row .squishy-mini:nth-child(4){animation-delay:.75s;}
+.hero-row .squishy-mini:nth-child(5){animation-delay:1s;}
+
+.name-field{
+  font-family:var(--font-fun); font-size:1.25rem; text-align:center; font-weight:700;
+  padding:14px 18px; border-radius:22px; border:4px solid var(--lilac);
+  background:var(--white); color:var(--ink); width:min(330px,100%);
+  box-shadow:inset 0 3px 8px rgba(122,83,214,.12); outline:none;
+}
+.name-field:focus{border-color:var(--pink); box-shadow:inset 0 3px 8px rgba(229,86,155,.16), 0 0 0 5px rgba(255,159,207,.25);}
+.name-field::placeholder{color:#c3b6cb; font-weight:600;}
+
+.badge-row{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:20px;}
+.badge{font-size:.76rem; font-weight:800; padding:6px 12px; border-radius:999px;
+  background:var(--white); border:2px solid var(--lilac-soft); color:var(--ink-soft);}
+
+/* ============ MAPA / FASES ============ */
+.phase-grid{display:grid; gap:14px; margin-top:4px;}
+.phase{
+  display:flex; align-items:center; gap:14px; text-align:left;
+  padding:16px; border-radius:26px; border:5px solid var(--white); cursor:pointer;
+  box-shadow:var(--shadow-sm); transform-origin:center bottom;
+  transition:filter .2s ease;
+}
+.phase:hover{filter:brightness(1.03);}
+.phase.p1{background:linear-gradient(135deg,#ddfcec 0%, #c5f3ff 100%);}
+.phase.p2{background:linear-gradient(135deg,#ffe1f1 0%, #ece2ff 100%);}
+.phase.p3{background:linear-gradient(135deg,#fff6d9 0%, #ffe1f1 100%);}
+.phase.locked{filter:grayscale(.68) brightness(.97); cursor:not-allowed; opacity:.8;}
+.phase .emoji{font-size:2.3rem; width:58px; height:58px; display:grid; place-items:center;
+  background:rgba(255,255,255,.75); border-radius:20px; flex:0 0 auto; box-shadow:0 4px 0 rgba(122,83,214,.12);}
+.phase .info{flex:1 1 auto; min-width:0;}
+.phase .info h3{font-family:var(--font-fun); margin:0 0 2px; font-size:1.18rem; line-height:1.15;}
+.phase .info p{margin:0; font-size:.84rem; font-weight:700; color:var(--ink-soft);}
+.phase .state{font-family:var(--font-fun); font-weight:800; font-size:.86rem; text-align:center;
+  background:var(--white); border-radius:999px; padding:6px 12px; flex:0 0 auto; color:var(--ink-soft);
+  box-shadow:0 3px 0 rgba(122,83,214,.12);}
+.phase .state.done{color:var(--mint-deep); border:2px solid var(--mint);}
+
+/* ============ PRATELEIRA DE SQUISHIES ============ */
+.shelf-box{margin-top:16px;}
+.shelf-title{display:flex; align-items:center; gap:8px; margin:0 0 10px;
+  font-family:var(--font-fun); font-size:1.15rem;}
+.shelf-title .count{font-size:.8rem; font-weight:800; color:var(--ink-soft);
+  background:var(--white); border-radius:999px; padding:4px 10px; border:2px solid var(--lilac-soft);}
+.shelf{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(88px,1fr)); gap:10px;
+  padding:14px 12px 16px; border-radius:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,246,217,.6));
+  border:4px dashed rgba(201,177,255,.55);
+}
+.shelf-item{
+  display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer;
+  background:var(--white); border-radius:18px; padding:8px 4px 6px; border:3px solid var(--white);
+  box-shadow:0 5px 0 rgba(122,83,214,.12); transform-origin:center bottom;
+  transition:border-color .2s ease;
+}
+.shelf-item:hover{border-color:var(--pink);}
+.shelf-item .svgbox{width:52px; height:52px; display:grid; place-items:center;}
+.shelf-item .svgbox svg{width:100%; height:100%; display:block;}
+.shelf-item .nm{font-size:.62rem; font-weight:800; text-align:center; line-height:1.1; color:var(--ink-soft);}
+.shelf-item.locked{opacity:.45; filter:grayscale(1); cursor:default; box-shadow:none; border-style:dashed; border-color:#ddd3e4;}
+.shelf-item.locked .svgbox{opacity:.35;}
+.shelf-item.fresh{animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both;}
+.squishy-mini{width:60px;height:60px;}
+.squishy-mini svg{width:100%;height:100%;}
+
+/* ============ QUIZ ============ */
+.qhead{display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap;}
+.qtag{font-family:var(--font-fun); font-weight:800; font-size:.76rem; letter-spacing:.5px;
+  text-transform:uppercase; padding:5px 12px; border-radius:999px; background:var(--lilac-soft); color:var(--lilac-deep);}
+.qtag.t-voc8{background:var(--mint-soft); color:var(--mint-deep);}
+.qtag.t-fable{background:var(--blue-soft); color:var(--blue-deep);}
+.qtag.t-gram{background:var(--pink-soft); color:var(--pink-deep);}
+.qtag.t-voc9{background:var(--butter-soft); color:var(--butter-deep);}
+.qnum{margin-left:auto; font-weight:800; font-size:.82rem; color:var(--ink-soft);}
+
+.scene{
+  display:flex; gap:12px; align-items:center; padding:12px 14px; border-radius:20px;
+  background:linear-gradient(135deg, rgba(236,226,255,.75), rgba(220,241,255,.75));
+  border:3px solid var(--white); margin-bottom:14px;
+}
+.scene .av{font-size:2rem; flex:0 0 auto; animation:jellyWiggle 3.4s ease-in-out infinite;}
+.scene .txt{font-weight:700; font-size:.94rem; color:var(--ink);}
+
+.question{font-family:var(--font-fun); font-size:1.26rem; font-weight:700; line-height:1.3; margin:0 0 14px;}
+.question .en{color:var(--lilac-deep);}
+
+.story{
+  background:linear-gradient(180deg,#fffdf6,#fff6d9);
+  border:4px solid var(--white); border-left:10px solid var(--butter);
+  border-radius:20px; padding:16px 18px; margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
+  font-size:.97rem; line-height:1.62;
+}
+.story h4{font-family:var(--font-fun); margin:0 0 8px; font-size:1.2rem; color:var(--butter-deep);}
+.story p{margin:0 0 9px;}
+.story p:last-child{margin-bottom:0;}
+.story b{color:var(--pink-deep);}
+.story .glossary{margin-top:12px; padding-top:10px; border-top:2px dashed rgba(199,146,6,.3);
+  font-size:.8rem; font-weight:700; color:var(--ink-soft);}
+
+.options{display:grid; gap:10px;}
+.opt{
+  display:flex; align-items:center; gap:11px; text-align:left; width:100%;
+  font-family:var(--font-body); font-weight:700; font-size:1.02rem; color:var(--ink);
+  background:var(--white); border:4px solid #f0e7f7; border-radius:20px; padding:13px 15px;
+  cursor:pointer; box-shadow:0 5px 0 rgba(122,83,214,.12); transform-origin:center bottom;
+  transition:border-color .18s ease, background .18s ease;
+}
+.opt:hover:not([disabled]){border-color:var(--lilac); background:#fdfaff;}
+.opt .key{
+  flex:0 0 auto; width:32px; height:32px; border-radius:12px; display:grid; place-items:center;
+  font-family:var(--font-fun); font-weight:800; background:var(--lilac-soft); color:var(--lilac-deep); font-size:.95rem;
+}
+.opt .lbl{flex:1 1 auto;}
+.opt .lbl .pt{display:block; font-size:.76rem; font-weight:700; color:var(--ink-soft);}
+.opt.correct{border-color:var(--mint); background:var(--mint-soft); box-shadow:0 5px 0 rgba(31,156,106,.3);}
+.opt.correct .key{background:var(--mint); color:#0c5c3d;}
+.opt.wrong{border-color:var(--coral); background:#ffeae5; box-shadow:0 5px 0 rgba(226,87,60,.28);
+  animation:shakeNo .45s ease both;}
+.opt.wrong .key{background:var(--coral); color:#6d2010;}
+.opt.picked{border-color:var(--pink); background:var(--pink-soft); box-shadow:0 5px 0 rgba(229,86,155,.28);}
+.opt.picked .key{background:var(--pink); color:#5c1d40;}
+.opt.faded{opacity:.5;}
+.opt[disabled]{cursor:default;}
+
+/* grade de roupas / multi-seleção */
+.options.grid2{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.opt.chip{flex-direction:column; text-align:center; gap:4px; padding:14px 10px;}
+.opt.chip .ico{font-size:1.9rem; line-height:1;}
+.opt.chip .lbl{font-size:1rem;}
+.opt.chip .key{display:none;}
+.opt.chip .check{position:absolute;}
+.opt.chip.picked::after{content:'✓'; position:absolute; top:6px; right:10px; font-weight:900; color:var(--pink-deep);}
+.opt.chip.correct::after{content:'✓'; position:absolute; top:6px; right:10px; font-weight:900; color:var(--mint-deep);}
+.opt.chip{position:relative;}
+
+/* ============ MATCH (ligar colunas) ============ */
+.match-wrap{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.match-col{display:grid; gap:9px; align-content:start;}
+.match-col h5{font-family:var(--font-fun); margin:0 0 2px; font-size:.9rem; color:var(--ink-soft); text-align:center;
+  text-transform:uppercase; letter-spacing:.6px;}
+.m-item{
+  font-weight:800; font-size:.95rem; padding:12px 10px; border-radius:18px; cursor:pointer;
+  background:var(--white); border:4px solid #f0e7f7; box-shadow:0 5px 0 rgba(122,83,214,.1);
+  text-align:center; transform-origin:center bottom; transition:border-color .18s ease;
+  color:var(--ink); line-height:1.2;
+}
+.m-item.en{font-family:var(--font-fun); color:var(--lilac-deep); font-size:1.02rem;}
+.m-item.sel{border-color:var(--pink); background:var(--pink-soft);}
+.m-item.matched{border-color:var(--mint); background:var(--mint-soft); color:var(--mint-deep); cursor:default;
+  box-shadow:0 5px 0 rgba(31,156,106,.25);}
+.m-item.bad{animation:shakeNo .45s ease both; border-color:var(--coral); background:#ffeae5;}
+
+/* ============ GAPS (frases com lacuna) ============ */
+.gap-row{
+  background:var(--white); border:4px solid #f0e7f7; border-radius:20px; padding:13px 15px; margin-bottom:11px;
+  box-shadow:0 5px 0 rgba(122,83,214,.1);
+}
+.gap-row.solved{border-color:var(--mint); background:var(--mint-soft); box-shadow:0 5px 0 rgba(31,156,106,.22);}
+.gap-row .sent{font-weight:800; font-size:1rem; margin-bottom:9px; line-height:1.45;}
+.gap-row .sent .blank{display:inline-block; min-width:92px; border-bottom:4px dotted var(--lilac);
+  text-align:center; color:var(--lilac-deep); font-family:var(--font-fun);}
+.gap-row .sent .blank.filled{border-bottom-color:var(--mint-deep); color:var(--mint-deep);}
+.gap-row .mini-opts{display:flex; gap:7px; flex-wrap:wrap;}
+.mini{
+  font-family:var(--font-fun); font-weight:800; font-size:.92rem; padding:9px 14px; border-radius:16px;
+  background:var(--lilac-soft); border:3px solid var(--white); color:var(--lilac-deep); cursor:pointer;
+  box-shadow:0 4px 0 rgba(122,83,214,.16); transform-origin:center bottom; transition:filter .18s ease;
+}
+.mini:hover:not([disabled]){filter:brightness(1.05);}
+.mini.ok{background:var(--mint); color:#0c5c3d; box-shadow:0 4px 0 rgba(31,156,106,.35);}
+.mini.no{background:#ffcfc5; color:#6d2010; animation:shakeNo .45s ease both;}
+.mini[disabled]{cursor:default; opacity:.55;}
+.gap-row .pt-hint{font-size:.78rem; font-weight:700; color:var(--ink-soft); margin-top:7px;}
+
+/* ============ FEEDBACK ============ */
+.feedback{
+  margin-top:14px; padding:15px 17px; border-radius:22px; border:4px solid var(--white);
+  animation:slideUpFade .35s ease both; font-weight:700; line-height:1.5; font-size:.95rem;
+  box-shadow:var(--shadow-sm);
+}
+.feedback.good{background:linear-gradient(135deg,#ddfcec,#d9f6ff); border-left:10px solid var(--mint);}
+.feedback.bad{background:linear-gradient(135deg,#ffeae5,#fff1e8); border-left:10px solid var(--coral);}
+.feedback .fh{font-family:var(--font-fun); font-size:1.12rem; display:flex; align-items:center; gap:8px; margin-bottom:5px;}
+.feedback .en-word{font-family:var(--font-fun); color:var(--lilac-deep); font-weight:800;}
+
+.tip{
+  margin-top:12px; padding:14px 16px; border-radius:20px;
+  background:linear-gradient(135deg,#ece2ff,#dcf1ff); border:4px dashed var(--lilac);
+  animation:slideUpFade .4s ease both; font-size:.9rem; font-weight:700; line-height:1.55;
+}
+.tip .th{font-family:var(--font-fun); font-size:1.05rem; color:var(--lilac-deep); margin-bottom:5px;
+  display:flex; align-items:center; gap:8px;}
+.tip ul{margin:7px 0 0; padding-left:20px;}
+.tip li{margin-bottom:4px;}
+.tip code{background:var(--white); padding:1px 6px; border-radius:7px; font-family:var(--font-fun);
+  font-weight:800; color:var(--pink-deep);}
+
+.qfoot{display:flex; gap:10px; justify-content:space-between; align-items:center; margin-top:16px; flex-wrap:wrap;}
+
+/* ============ POPUP DE SQUISHY NOVO ============ */
+.overlay{
+  position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px;
+  background:rgba(74,59,82,.45); backdrop-filter:blur(5px);
+  animation:slideUpFade .25s ease both;
+}
+.modal{
+  background:var(--white); border-radius:30px; border:6px solid var(--white);
+  box-shadow:0 20px 50px rgba(74,59,82,.35); padding:24px; text-align:center;
+  max-width:420px; width:100%; animation:popIn .55s cubic-bezier(.34,1.56,.64,1) both;
+  max-height:88vh; overflow:auto;
+}
+.modal h3{font-family:var(--font-fun); font-size:1.5rem; margin:4px 0 6px;
+  background:linear-gradient(95deg,#e5569b,#7a53d6); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.modal p{font-weight:700; color:var(--ink-soft); margin:0 0 14px; font-size:.94rem;}
+.modal .bigsquishy{width:150px; height:150px; margin:4px auto 10px; cursor:pointer; transform-origin:center bottom;}
+.modal .bigsquishy svg{width:100%; height:100%;}
+.sparkles{position:relative; height:0;}
+.sparkles span{position:absolute; font-size:1.4rem; animation:sparkleSpin 2.4s linear infinite;}
+
+/* ============ RESULTADO ============ */
+.result{text-align:center;}
+.result h2{font-family:var(--font-fun); font-size:1.9rem; margin:6px 0 4px;
+  background:linear-gradient(95deg,#e5569b,#7a53d6 50%,#2f7fc4);
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+.score-ring{
+  width:150px; height:150px; margin:14px auto; border-radius:50%;
+  display:grid; place-items:center; position:relative;
+  background:conic-gradient(var(--mint) calc(var(--pc)*1%), #eee6f3 0);
+  animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+.score-ring .inner{
+  width:116px; height:116px; border-radius:50%; background:var(--white); display:grid; place-items:center;
+  box-shadow:inset 0 4px 10px rgba(122,83,214,.14);
+}
+.score-ring .inner b{font-family:var(--font-fun); font-size:2rem; line-height:1; color:var(--mint-deep);}
+.score-ring .inner span{font-size:.7rem; font-weight:800; color:var(--ink-soft); letter-spacing:.5px;}
+.topic-bars{display:grid; gap:10px; margin:18px 0 6px; text-align:left;}
+.tbar .tl{display:flex; justify-content:space-between; font-weight:800; font-size:.86rem; margin-bottom:4px;}
+.tbar .tt{height:16px; border-radius:999px; background:#eee6f3; overflow:hidden;}
+.tbar .tf{height:100%; border-radius:999px; transition:width .7s cubic-bezier(.34,1.56,.64,1);}
+
+/* ============ ÁREA DO PROFESSOR ============ */
+.teacher .modal{max-width:620px; text-align:left;}
+.teacher h3{text-align:center;}
+.lockbox{text-align:center;}
+.pin-field{font-family:var(--font-fun); font-size:1.8rem; letter-spacing:12px; text-align:center;
+  width:180px; padding:12px; border-radius:18px; border:4px solid var(--lilac); background:#fdfaff;
+  color:var(--ink); outline:none;}
+.pin-field:focus{border-color:var(--pink);}
+.treport h4{font-family:var(--font-fun); margin:16px 0 8px; font-size:1.1rem; color:var(--lilac-deep);
+  border-bottom:3px dashed var(--lilac-soft); padding-bottom:5px;}
+.treport .meta{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px;}
+.miss-list{display:flex; flex-wrap:wrap; gap:7px; margin:0; padding:0; list-style:none;}
+.miss-list li{background:#ffeae5; border:2px solid var(--coral); color:#6d2010; border-radius:14px;
+  padding:6px 11px; font-size:.82rem; font-weight:800;}
+.miss-list li.none{background:var(--mint-soft); border-color:var(--mint); color:var(--mint-deep);}
+.miss-list li small{display:block; font-weight:700; opacity:.8; font-size:.72rem;}
+.t-actions{display:flex; gap:9px; flex-wrap:wrap; margin-top:18px; justify-content:center;}
+.danger{background:linear-gradient(180deg,#ffc3b6,#ff9d8a) !important; color:#5e1c0d !important;
+  box-shadow:0 8px 0 #c6462c, 0 14px 22px rgba(198,70,44,.3) !important;}
+
+.footer-note{text-align:center; font-size:.74rem; font-weight:700; color:#b3a6bb; margin:22px 0 10px;}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width:600px){
+  .wrap{padding:14px 12px 0;}
+  .logo{font-size:1.25rem;}
+  .welcome h1{font-size:1.65rem;}
+  .question{font-size:1.1rem;}
+  .match-wrap{grid-template-columns:1fr 1fr; gap:8px;}
+  .m-item{font-size:.84rem; padding:10px 6px;}
+  .m-item.en{font-size:.92rem;}
+  .phase .emoji{width:48px; height:48px; font-size:1.9rem;}
+  .phase .info h3{font-size:1.04rem;}
+  .phase .state{font-size:.74rem; padding:5px 9px;}
+  .card{padding:16px;}
+  .story{padding:13px 14px;}
+  .sq{font-size:.96rem; padding:12px 18px;}
+  .sq.big{font-size:1.1rem; padding:15px 24px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
+}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+<div class="wrap" id="app"></div>
+<div id="overlays"></div>
+<script>
+"use strict";
+
+/* ============================================================
+   1. ÁUDIO FOFO (Web Audio API) - pops, chimes e squishes
+   ============================================================ */
+const Sound = (() => {
+  let ctx = null;
+  const on = () => { try { if(!ctx) ctx = new (window.AudioContext||window.webkitAudioContext)();
+    if(ctx.state === 'suspended') ctx.resume(); return ctx; } catch(e){ return null; } };
+
+  function tone(freq, dur, type, vol, slideTo, delay){
+    const c = on(); if(!c) return;
+    const t0 = c.currentTime + (delay||0);
+    const osc = c.createOscillator(), g = c.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.setValueAtTime(freq, t0);
+    if(slideTo) osc.frequency.exponentialRampToValueAtTime(Math.max(40,slideTo), t0 + dur);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol || 0.16, t0 + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    osc.connect(g); g.connect(c.destination);
+    osc.start(t0); osc.stop(t0 + dur + 0.02);
+  }
+
+  return {
+    unlockAudio: on,
+    /* pop fofo de apertar squishy */
+    pop(){ tone(760, 0.1, 'sine', 0.2, 300); tone(1500, 0.05, 'triangle', 0.06, 900, 0.01); },
+    /* clique macio de botão */
+    click(){ tone(520, 0.07, 'sine', 0.13, 340); },
+    /* apertou um squishy da prateleira (mais longo e borrachudo) */
+    squish(){ tone(300, 0.17, 'sine', 0.2, 820); tone(880, 0.1, 'triangle', 0.07, 420, 0.06); },
+    /* acertou */
+    correct(){ [[659,0],[784,0.09],[988,0.18],[1319,0.27]].forEach(([f,d]) => tone(f,0.22,'sine',0.14,null,d)); },
+    /* errou - blip gentil, nada assustador */
+    wrong(){ tone(330, 0.16, 'triangle', 0.11, 250); tone(247, 0.2, 'sine', 0.1, 200, 0.1); },
+    /* desbloqueou squishy - chuvinha de estrelinhas */
+    unlock(){ [[523,0],[659,0.07],[784,0.14],[1047,0.21],[1319,0.3],[1568,0.4]]
+      .forEach(([f,d]) => tone(f,0.3,'triangle',0.12,null,d)); },
+    /* fim de fase */
+    fanfare(){ [[523,0],[523,0.12],[784,0.24],[1047,0.4],[1319,0.56]]
+      .forEach(([f,d]) => tone(f,0.4,'sine',0.14,null,d)); }
+  };
+})();
+
+/* ============================================================
+   2. COLEÇÃO DE SQUISHIES (ilustrados em SVG inline)
+   ============================================================ */
+const SQUISHIES = {
+  alien: { name:'Blue Alien Squishy', hint:'Ohana significa família! 💙',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="92" rx="28" ry="5" fill="#000" opacity=".08"/>
+      <path d="M22 44C14 30 12 14 20 12c9-2 16 10 19 20z" fill="#6cc6f5" stroke="#3d93c7" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M78 44c8-14 10-30 2-32-9-2-16 10-19 20z" fill="#6cc6f5" stroke="#3d93c7" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="50" cy="58" rx="33" ry="30" fill="#7fd0f7" stroke="#3d93c7" stroke-width="3"/>
+      <ellipse cx="50" cy="68" rx="20" ry="16" fill="#cdeeff" opacity=".85"/>
+      <ellipse cx="39" cy="52" rx="7.5" ry="9" fill="#2b2033"/><circle cx="41" cy="48.5" r="2.6" fill="#fff"/>
+      <ellipse cx="61" cy="52" rx="7.5" ry="9" fill="#2b2033"/><circle cx="63" cy="48.5" r="2.6" fill="#fff"/>
+      <ellipse cx="50" cy="63" rx="4.6" ry="3.4" fill="#2b2033"/>
+      <path d="M43 70q7 7 14 0" stroke="#2b2033" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="27" cy="63" rx="4.6" ry="3.2" fill="#ff9fcf" opacity=".65"/>
+      <ellipse cx="73" cy="63" rx="4.6" ry="3.2" fill="#ff9fcf" opacity=".65"/>
+    </svg>` },
+  web: { name:'Teia Squishy', hint:'Qualquer um pode usar a máscara! 🕷️',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="92" rx="26" ry="5" fill="#000" opacity=".08"/>
+      <circle cx="50" cy="52" r="34" fill="#ff8aa8" stroke="#d1365c" stroke-width="3"/>
+      <circle cx="50" cy="52" r="24" fill="none" stroke="#fff" stroke-width="2.6" opacity=".9"/>
+      <circle cx="50" cy="52" r="14" fill="none" stroke="#fff" stroke-width="2.6" opacity=".9"/>
+      <circle cx="50" cy="52" r="5" fill="#fff" opacity=".9"/>
+      <g stroke="#fff" stroke-width="2.6" opacity=".9">
+        <path d="M50 18v68M16 52h68M26 28l48 48M74 28L26 76"/>
+      </g>
+      <ellipse cx="38" cy="47" rx="6" ry="7.4" fill="#2b2033"/><circle cx="39.6" cy="44" r="2.2" fill="#fff"/>
+      <ellipse cx="62" cy="47" rx="6" ry="7.4" fill="#2b2033"/><circle cx="63.6" cy="44" r="2.2" fill="#fff"/>
+      <path d="M44 62q6 5 12 0" stroke="#2b2033" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </svg>` },
+  star: { name:'Estrela KATSEYE Squishy', hint:'Gnarly! Brilha no palco! ⭐',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="92" rx="26" ry="5" fill="#000" opacity=".08"/>
+      <path d="M50 10l11 24 26 3-19 18 5 26-23-13-23 13 5-26-19-18 26-3z"
+        fill="#ffd36e" stroke="#d99a12" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M50 20l7 17 18 2-13 12 3 18-15-9-15 9 3-18-13-12 18-2z" fill="#ffe9a8" opacity=".75"/>
+      <ellipse cx="42" cy="48" rx="5.4" ry="6.8" fill="#2b2033"/><circle cx="43.4" cy="45.4" r="2" fill="#fff"/>
+      <ellipse cx="58" cy="48" rx="5.4" ry="6.8" fill="#2b2033"/><circle cx="59.4" cy="45.4" r="2" fill="#fff"/>
+      <path d="M44 59q6 6 12 0" stroke="#2b2033" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="33" cy="56" rx="4" ry="2.8" fill="#ff9fcf" opacity=".7"/>
+      <ellipse cx="67" cy="56" rx="4" ry="2.8" fill="#ff9fcf" opacity=".7"/>
+    </svg>` },
+  crown: { name:'Coroa da Torre Squishy', hint:'Cabelo mágico e muita coragem! 👑',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="92" rx="28" ry="5" fill="#000" opacity=".08"/>
+      <path d="M16 72l4-40 16 16 14-22 14 22 16-16 4 40z" fill="#ffd36e" stroke="#c98a0c" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="16" y="70" width="68" height="14" rx="7" fill="#ffc53d" stroke="#c98a0c" stroke-width="3"/>
+      <circle cx="20" cy="30" r="5" fill="#c9b1ff" stroke="#7a53d6" stroke-width="2.4"/>
+      <circle cx="80" cy="30" r="5" fill="#c9b1ff" stroke="#7a53d6" stroke-width="2.4"/>
+      <circle cx="50" cy="48" r="7" fill="#c9b1ff" stroke="#7a53d6" stroke-width="2.6"/>
+      <ellipse cx="38" cy="62" rx="4.6" ry="5.6" fill="#2b2033"/><circle cx="39.2" cy="60" r="1.7" fill="#fff"/>
+      <ellipse cx="62" cy="62" rx="4.6" ry="5.6" fill="#2b2033"/><circle cx="63.2" cy="60" r="1.7" fill="#fff"/>
+      <path d="M44.5 77q5.5 4.5 11 0" stroke="#7a4a00" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </svg>` },
+  sweater: { name:'Wool Sweater Squishy', hint:'Put on a wool sweater! Que quentinho! 🧶',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="93" rx="27" ry="5" fill="#000" opacity=".08"/>
+      <path d="M32 22h36l16 12-9 14-7-4v38a4 4 0 01-4 4H36a4 4 0 01-4-4V44l-7 4-9-14z"
+        fill="#ffb7dc" stroke="#d1548f" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M32 22q18 12 36 0" fill="#ffd6ea" stroke="#d1548f" stroke-width="3"/>
+      <g stroke="#ffffff" stroke-width="2.2" opacity=".75">
+        <path d="M38 48q6 4 12 0t12 0M38 58q6 4 12 0t12 0M38 68q6 4 12 0t12 0"/>
+      </g>
+      <rect x="34" y="78" width="32" height="8" rx="4" fill="#ffd6ea" stroke="#d1548f" stroke-width="2.6"/>
+      <ellipse cx="42" cy="40" rx="4.4" ry="5.4" fill="#2b2033"/><circle cx="43.3" cy="38" r="1.7" fill="#fff"/>
+      <ellipse cx="58" cy="40" rx="4.4" ry="5.4" fill="#2b2033"/><circle cx="59.3" cy="38" r="1.7" fill="#fff"/>
+      <path d="M45 48q5 4 10 0" stroke="#2b2033" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    </svg>` },
+  shell: { name:'Ocean Shell Squishy', hint:'O oceano chama por você! 🐚',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="92" rx="26" ry="5" fill="#000" opacity=".08"/>
+      <path d="M50 16c20 0 34 18 34 38 0 14-8 24-34 24S16 68 16 54c0-20 14-38 34-38z"
+        fill="#9ef0c8" stroke="#1f9c6a" stroke-width="3"/>
+      <g stroke="#1f9c6a" stroke-width="2.4" fill="none" opacity=".65">
+        <path d="M50 16v62M50 16c-10 14-14 34-14 62M50 16c10 14 14 34 14 62M26 40q24 6 48 0M20 56q30 8 60 0"/>
+      </g>
+      <ellipse cx="40" cy="52" rx="5.4" ry="6.6" fill="#2b2033"/><circle cx="41.4" cy="49.6" r="2" fill="#fff"/>
+      <ellipse cx="60" cy="52" rx="5.4" ry="6.6" fill="#2b2033"/><circle cx="61.4" cy="49.6" r="2" fill="#fff"/>
+      <path d="M44 63q6 5 12 0" stroke="#2b2033" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </svg>` },
+  snow: { name:'Snowflake Squishy', hint:'Let it go... but put on your gloves! ❄️',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="93" rx="24" ry="4.5" fill="#000" opacity=".07"/>
+      <g stroke="#7cc8f0" stroke-width="7" stroke-linecap="round">
+        <path d="M50 14v72M20 32l60 36M80 32L20 68"/>
+      </g>
+      <g stroke="#aee2ff" stroke-width="5" stroke-linecap="round">
+        <path d="M50 24l-9 9M50 24l9 9M50 76l-9-9M50 76l9-9M27 36l1 12M27 36l11-3M73 64l-1-12M73 64l-11 3M73 36l-11-3M73 36l-1 12M27 64l11 3M27 64l-1-12"/>
+      </g>
+      <circle cx="50" cy="50" r="17" fill="#dcf1ff" stroke="#7cc8f0" stroke-width="3"/>
+      <ellipse cx="44" cy="47" rx="4.2" ry="5.2" fill="#2b2033"/><circle cx="45.1" cy="45" r="1.6" fill="#fff"/>
+      <ellipse cx="56" cy="47" rx="4.2" ry="5.2" fill="#2b2033"/><circle cx="57.1" cy="45" r="1.6" fill="#fff"/>
+      <path d="M46 56q4 4 8 0" stroke="#2b2033" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    </svg>` },
+  mask: { name:'Spider Hood Squishy', hint:'Gwen style: ballet + guitarra! 🎸',
+    svg:`<svg viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="92" rx="26" ry="5" fill="#000" opacity=".08"/>
+      <path d="M50 16c20 0 32 16 32 34 0 20-14 32-32 32S18 70 18 50c0-18 12-34 32-34z"
+        fill="#ffffff" stroke="#c9b1ff" stroke-width="3"/>
+      <path d="M50 16c20 0 32 16 32 34H18c0-18 12-34 32-34z" fill="#e5d4ff"/>
+      <path d="M22 44q28-16 56 0" fill="none" stroke="#ff9fcf" stroke-width="4" stroke-linecap="round"/>
+      <path d="M26 56c0-7 7-11 13-9 5 1.6 6 6 5 9-1.2 3.6-6 6-11 5-4-.8-7-2.6-7-5z" fill="#2b2033"/>
+      <path d="M74 56c0-7-7-11-13-9-5 1.6-6 6-5 9 1.2 3.6 6 6 11 5 4-.8 7-2.6 7-5z" fill="#2b2033"/>
+      <circle cx="33" cy="52" r="2.6" fill="#fff"/><circle cx="67" cy="52" r="2.6" fill="#fff"/>
+      <path d="M44 70q6 5 12 0" stroke="#c9b1ff" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <g stroke="#c9b1ff" stroke-width="1.8" opacity=".8" fill="none">
+        <path d="M50 20v12M38 24l6 10M62 24l-6 10"/>
+      </g>
+    </svg>` }
+};
+
+/* ordem na prateleira + como se desbloqueiam */
+const SQUISHY_ORDER = [
+  { id:'alien',   unlockText:'Acertar a 1ª vez' },
+  { id:'web',     unlockText:'5 acertos seguidos' },
+  { id:'star',    unlockText:'Terminar a Fase 1' },
+  { id:'crown',   unlockText:'10 acertos seguidos' },
+  { id:'sweater', unlockText:'Terminar a Fase 2' },
+  { id:'shell',   unlockText:'25 acertos de 1ª' },
+  { id:'snow',    unlockText:'Terminar a Fase 3' },
+  { id:'mask',    unlockText:'Completar a jornada' }
+];
+
+/* ============================================================
+   3. TÓPICOS AVALIADOS (para o relatório da professora)
+   ============================================================ */
+const TOPICS = {
+  voc8:  { label:'Vocabulário Unit 8',          color:'#1f9c6a', cls:'t-voc8'  },
+  fable: { label:'Interpretação de Fábula',     color:'#2f7fc4', cls:'t-fable' },
+  gram:  { label:'Should / Shouldn’t / Have to', color:'#e5569b', cls:'t-gram' },
+  voc9:  { label:'Vocabulário e Tecidos Unit 9', color:'#c79206', cls:'t-voc9'  }
+};
+
+/* ============================================================
+   4. A FÁBULA (Folktale de leitura da Fase 1)
+   ============================================================ */
+const FABLE_HTML = `
+<h4>🌿 The Turtle, the Deer and the Eagle</h4>
+<p><em>A folktale from the forest</em></p>
+<p>One sunny morning, a little <b>turtle</b> named Tilly was walking slowly on a <b>path</b>
+near a quiet <b>pond</b>. The rocks around the water were green and soft with <b>moss</b>.</p>
+<p>Tilly did not see a big <b>net</b>. A hunter put it on the path to catch forest
+<b>creatures</b>. Suddenly — <em>snap!</em> — Tilly was trapped inside the net.</p>
+<p>&ldquo;Help! Help!&rdquo; cried Tilly. A brown <b>deer</b> heard her and ran to the pond.
+He pushed the net with his strong legs, but the net did not open.</p>
+<p>Then an <b>eagle</b> came down from the sky. &ldquo;My beak is sharp. I can cut the ropes!&rdquo;
+she said. The deer pushed, the eagle cut, and finally Tilly could <b>escape</b>.</p>
+<p>&ldquo;Thank you, my friends!&rdquo; said Tilly. &ldquo;Alone I am very slow, but together we are very strong.&rdquo;</p>
+<div class="glossary">📖 <b>Glossário:</b> hunter = caçador &nbsp;•&nbsp; trapped = preso &nbsp;•&nbsp;
+beak = bico &nbsp;•&nbsp; ropes = cordas &nbsp;•&nbsp; alone = sozinho(a) &nbsp;•&nbsp; together = juntos</div>`;
+
+/* ============================================================
+   5. AS 15 QUESTÕES DA JORNADA
+   tipos: match | mc | gaps | multi
+   ============================================================ */
+const FASES = [
+  {
+    id:1, title:"Storyteller's Forest", emoji:'🌲',
+    sub:'Unit 8 · Vocabulário, Fábulas e Narrativa',
+    cardClass:'p1',
+    reward:'star',
+    questions:[
+      { id:'q1', type:'match', topic:'voc8',
+        scene:{ av:'🦌', txt:'Miles Morales abriu um portal e caiu na Floresta dos Contos! Ajude ele a lembrar o nome dos animais e das plantas.' },
+        prompt:'Ligue cada palavra em inglês ao seu significado:',
+        pairs:[
+          { en:'deer',   pt:'veado / cervo',          item:'deer (veado)' },
+          { en:'eagle',  pt:'águia',                  item:'eagle (águia)' },
+          { en:'turtle', pt:'tartaruga',              item:'turtle (tartaruga)' },
+          { en:'moss',   pt:'musgo (planta verde)',   item:'moss (musgo)' }
+        ],
+        feedback:'Perfeito! <span class="en-word">deer</span> = veado, <span class="en-word">eagle</span> = águia, <span class="en-word">turtle</span> = tartaruga e <span class="en-word">moss</span> = musgo, aquela plantinha verde fofa que cresce nas pedras. 🌿' },
+
+      { id:'q2', type:'gaps', topic:'voc8',
+        scene:{ av:'🕸️', txt:'Cuidado! Tem uma armadilha na floresta... e o Miles está investigando.' },
+        prompt:'Complete cada frase com a palavra certa:',
+        rows:[
+          { sent:'The hunter put a big ___ on the ground to catch animals.',
+            item:'net (rede)',
+            opts:[ {t:'net', ok:true}, {t:'path'}, {t:'pond'} ],
+            hint:'<span class="en-word">Net</span> = <b>rede</b> (pega animais e peixes). <span class="en-word">Path</span> = trilha e <span class="en-word">pond</span> = laguinho.' },
+          { sent:'A turtle, a deer and an eagle are forest ___.',
+            item:'creatures (criaturas / seres)',
+            opts:[ {t:'creatures', ok:true}, {t:'villains'}, {t:'endings'} ],
+            hint:'<span class="en-word">Creature</span> = criatura, ser vivo. <span class="en-word">Villain</span> = vilão e <span class="en-word">ending</span> = desfecho.' },
+          { sent:'Miles Morales can climb walls. He has spider ___.',
+            item:'powers (poderes)',
+            opts:[ {t:'powers', ok:true}, {t:'moss'}, {t:'tricks'} ],
+            hint:'<span class="en-word">Powers</span> = poderes. (<span class="en-word">Trick</span> = truque, pegadinha — é outra coisa!)' },
+          { sent:'On Saturday I watch a funny ___ on TV, with animated drawings.',
+            item:'cartoon (desenho animado)',
+            opts:[ {t:'cartoon', ok:true}, {t:'folklore'}, {t:'net'} ],
+            hint:'<span class="en-word">Cartoon</span> = desenho animado. <span class="en-word">Folklore</span> = folclore (histórias antigas do povo).' },
+          { sent:'A blue creature with big ears and antennas is very ___ — it is not common!',
+            item:'unusual (incomum / diferente)',
+            opts:[ {t:'unusual', ok:true}, {t:'usual'}, {t:'unlucky'} ],
+            hint:'<span class="en-word">Unusual</span> = incomum, fora do normal, diferente — igual ao Stitch! 💙' }
+        ],
+        feedback:'Perfeito! 🕸️ <span class="en-word">net</span> = rede, <span class="en-word">creature</span> = criatura, <span class="en-word">powers</span> = poderes, <span class="en-word">cartoon</span> = desenho animado e <span class="en-word">unusual</span> = incomum.' },
+
+      { id:'q3', type:'match', topic:'voc8',
+        scene:{ av:'📚', txt:'A Rapunzel está organizando a biblioteca da torre. Cada livro precisa da etiqueta certa!' },
+        prompt:'Ligue cada palavra do mundo das histórias ao significado:',
+        pairs:[
+          { en:'fairy tale',  pt:'conto de fadas',                          item:'fairy tale (conto de fadas)' },
+          { en:'folklore',    pt:'folclore: histórias antigas de um povo',   item:'folklore (folclore)' },
+          { en:'villain',     pt:'vilão / vilã',                            item:'villain (vilão)' },
+          { en:'comic book',  pt:'revista em quadrinhos (gibi)',            item:'comic book (gibi)' },
+          { en:'trick',       pt:'truque / pegadinha',                      item:'trick (truque)' }
+        ],
+        feedback:'Muito bem! <span class="en-word">fairy tale</span> tem fadas e magia; <span class="en-word">folklore</span> são as histórias antigas contadas pelo povo de um país; o <span class="en-word">villain</span> é quem faz o mal na história; e o <span class="en-word">comic book</span> é o gibi — foi num <span class="en-word">comic book</span> que o Miles Morales apareceu primeiro! E <span class="en-word">trick</span> = truque, aquela pegadinha que o vilão prepara. 📚' },
+
+      { id:'q4', type:'gaps', topic:'fable', story:FABLE_HTML,
+        scene:{ av:'🐢', txt:'Leia a fábula com calma e depois responda. Pode voltar e ler de novo quantas vezes quiser!' },
+        prompt:'Answer about the story (responda sobre a história):',
+        rows:[
+          { sent:'What trapped Tilly on the path?', blank:'?',
+            item:'Compreensão: o que prendeu a turtle (a net)',
+            opts:[ {t:'a net', ok:true}, {t:'a deer'}, {t:'the moss'} ],
+            hint:'No texto: &ldquo;Tilly did not see a big <b>net</b>... Tilly was trapped inside the net.&rdquo;' },
+          { sent:'Who cut the ropes of the net?', blank:'?',
+            item:'Compreensão: quem cortou a net (a eagle)',
+            opts:[ {t:'the eagle', ok:true}, {t:'the turtle'}, {t:'the hunter'} ],
+            hint:'No texto: &ldquo;My beak is sharp. I can cut the ropes!&rdquo; — quem fala isso é a <b>eagle</b> (águia).' },
+          { sent:'Where was Tilly walking in the morning?', blank:'?',
+            item:'Compreensão: onde a turtle andava (path / pond)',
+            opts:[ {t:'on a path near a pond', ok:true}, {t:'inside a cartoon'}, {t:'in the city with Gwen'} ],
+            hint:'No primeiro parágrafo: &ldquo;walking slowly on a <b>path</b> near a quiet <b>pond</b>&rdquo;.' },
+          { sent:'At the end of the story, what could Tilly finally do?',
+            item:'escape (escapar / fugir)',
+            opts:[ {t:'escape from the net', ok:true}, {t:'fly with the eagle'}, {t:'eat all the moss'} ],
+            hint:'<span class="en-word">Escape</span> = escapar, fugir. No texto: &ldquo;finally Tilly could <b>escape</b>&rdquo;.' }
+        ],
+        feedback:'Você leu com muita atenção! Respostas explícitas são aquelas que estão escritinhas no texto — basta voltar e procurar. 🐢💚' },
+
+      { id:'q5', type:'mc', topic:'fable', item:'lesson (moral da história)',
+        scene:{ av:'💡', txt:'Toda fábula deixa um ensinamento no final.' },
+        prompt:'What is the <span class="en">lesson</span> (a moral) of this folktale?',
+        options:[
+          { en:'Friends are stronger when they help each other.', pt:'Os amigos são mais fortes quando se ajudam.', correct:true },
+          { en:'Turtles should never leave the pond.',            pt:'Tartarugas nunca devem sair do lago.' },
+          { en:'Eagles are the fastest animals in the forest.',   pt:'Águias são os animais mais rápidos da floresta.' },
+          { en:'You should always walk alone.',                   pt:'Você deve sempre andar sozinho.' }
+        ],
+        feedback:'Exatamente! A <span class="en-word">lesson</span> (ou <em>moral</em>) é o ensinamento da fábula. A própria Tilly fala: &ldquo;Alone I am very slow, but <b>together we are very strong</b>&rdquo;. 💡',
+        wrongFeedback:'Hmm, essa não é a moral. A <span class="en-word">lesson</span> é o <b>ensinamento</b> da história — releia a última fala da Tilly, ali está a dica! 🐢' },
+
+      { id:'q6', type:'match', topic:'fable',
+        scene:{ av:'🎬', txt:'A Gwen Stacy virou roteirista! Ela precisa nomear as partes da história.' },
+        prompt:'Ligue cada elemento da narrativa ao que ele significa:',
+        pairs:[
+          { en:'characters', pt:'os personagens da história',           item:'characters (personagens)' },
+          { en:'plot',       pt:'o enredo: o que acontece na história',  item:'plot (enredo)' },
+          { en:'ending',     pt:'o desfecho: como a história termina',   item:'ending (desfecho)' },
+          { en:'hero',       pt:'quem é corajoso e ajuda os outros',     item:'hero (herói)' }
+        ],
+        feedback:'Isso aí! Na nossa fábula os <span class="en-word">characters</span> são a turtle, o deer e a eagle; o <span class="en-word">plot</span> é a tartaruga presa na net e os amigos a salvando; o <span class="en-word">ending</span> é feliz, com todos juntos; e os <span class="en-word">heroes</span> são o deer e a eagle (o <span class="en-word">villain</span> seria o hunter!). 🎬' }
+    ]
+  },
+
+  {
+    id:2, title:"Hero's Advice & Missions", emoji:'🕷️',
+    sub:'Unit 8 · Should / Shouldn’t / Have to',
+    cardClass:'p2',
+    reward:'sweater',
+    questions:[
+      { id:'q7', type:'mc', topic:'gram', item:'should (conselho)',
+        scene:{ av:'❄️', txt:'A Elsa vai subir a montanha de gelo e pediu um conselho para você.' },
+        prompt:'It is very cold outside. Elsa, you <span class="en">_______</span> wear your gloves!',
+        options:[
+          { en:'should',    pt:'conselho: é uma boa ideia', correct:true },
+          { en:'shouldn’t', pt:'conselho do contrário: não é uma boa ideia' },
+          { en:'have to',   pt:'obrigação: é uma regra' }
+        ],
+        feedback:'Perfeito! <span class="en-word">should</span> = <b>deveria</b>. Serve para dar um <b>conselho</b> ou uma sugestão boa. Usar <span class="en-word">gloves</span> (luvas) no frio é uma ótima ideia! ❄️🧤',
+        wrongFeedback:'Pense bem: ninguém está <b>obrigando</b> a Elsa a nada — você está só dando um <b>conselho</b> bom para o frio. Conselho em inglês é <span class="en-word">should</span>. Leia a Detective Tip abaixo! 💛',
+        tipTopic:'gram' },
+
+      { id:'q8', type:'mc', topic:'gram', item:'have to (obrigação)',
+        scene:{ av:'🎒', txt:'Segunda-feira no Colégio Damas...' },
+        prompt:'It is a school rule: all students <span class="en">_______</span> wear a uniform.',
+        options:[
+          { en:'have to',   pt:'obrigação: é uma regra', correct:true },
+          { en:'should',    pt:'conselho: é uma boa ideia' },
+          { en:'shouldn’t', pt:'não é uma boa ideia' }
+        ],
+        feedback:'Isso mesmo! <span class="en-word">have to</span> = <b>ter que</b>. Usamos para <b>obrigações e regras</b> — e usar <span class="en-word">uniform</span> na escola é uma regra, não só um conselho! 🎒',
+        wrongFeedback:'Atenção: aqui a frase diz <em>&ldquo;It is a school <b>rule</b>&rdquo;</em> (é uma regra da escola). Regra = obrigação = <span class="en-word">have to</span>.',
+        tipTopic:'gram' },
+
+      { id:'q9', type:'mc', topic:'gram', item:'shouldn’t (conselho negativo)',
+        scene:{ av:'🕸️', txt:'O Miles Morales está aprendendo a usar os poderes dele.' },
+        prompt:'Miles, you <span class="en">_______</span> use your <span class="en">powers</span> to scare people. That is not nice!',
+        options:[
+          { en:'shouldn’t', pt:'não deveria (conselho negativo)', correct:true },
+          { en:'should',    pt:'deveria (conselho positivo)' },
+          { en:'have to',   pt:'tem que (obrigação)' }
+        ],
+        feedback:'Certíssimo! <span class="en-word">shouldn’t</span> (= should not) = <b>não deveria</b>. Serve para dizer que algo <b>não</b> é uma boa ideia. E <span class="en-word">powers</span> = poderes — um <span class="en-word">hero</span> usa os poderes para ajudar! 🕷️',
+        wrongFeedback:'Pense: a frase termina com &ldquo;That is not nice!&rdquo;. Então é um conselho do <b>contrário</b> — em inglês, <span class="en-word">shouldn’t</span>.',
+        tipTopic:'gram' },
+
+      { id:'q10', type:'gaps', topic:'gram',
+        scene:{ av:'🎤', txt:'O KATSEYE tem show hoje à noite! Complete o plano do grupo.' },
+        prompt:'Escolha <span class="en">should</span>, <span class="en">shouldn’t</span> ou <span class="en">have to</span>:',
+        rows:[
+          { sent:'The show starts at 8 p.m. The girls ___ arrive at 6 p.m. It is in the contract.',
+            item:'have to (regra do contrato)',
+            opts:[ {t:'have to', ok:true}, {t:'should'}, {t:'shouldn’t'} ],
+            hint:'&ldquo;It is in the contract&rdquo; = está no contrato. Contrato é <b>regra</b> → <span class="en-word">have to</span> (obrigação).' },
+          { sent:'They want a perfect dance. They ___ practice the choreography one more time.',
+            item:'should (sugestão / boa ideia)',
+            opts:[ {t:'should', ok:true}, {t:'have to'}, {t:'shouldn’t'} ],
+            hint:'Ninguém está obrigando — é só uma <b>boa ideia</b>, uma sugestão → <span class="en-word">should</span>.' },
+          { sent:'Before singing, they ___ drink ice-cold water. It is bad for the voice.',
+            item:'shouldn’t (conselho negativo)',
+            opts:[ {t:'shouldn’t', ok:true}, {t:'should'}, {t:'have to'} ],
+            hint:'&ldquo;It is bad for the voice&rdquo; = faz mal para a voz. Conselho do contrário → <span class="en-word">shouldn’t</span>.' }
+        ],
+        feedback:'Arrasou! 🎤 Resumindo: <span class="en-word">should</span>/<span class="en-word">shouldn’t</span> = conselho (deveria / não deveria) e <span class="en-word">have to</span> = obrigação (tem que, é regra).',
+        tipTopic:'gram' }
+    ]
+  },
+
+  {
+    id:3, title:'KATSEYE & Disney Fashion Studio', emoji:'👗',
+    sub:'Unit 9 · Roupas, Tecidos e Moda',
+    cardClass:'p3',
+    reward:'snow',
+    questions:[
+      { id:'q11', type:'multi', topic:'voc9',
+        scene:{ av:'❄️', txt:'Está fazendo -10°C no reino da Elsa! Monte o look quentinho.' },
+        prompt:'It is freezing! What should Elsa <span class="en">put on</span>? <small>(escolha as 2 opções certas)</small>',
+        need:2,
+        options:[
+          { en:'a wool sweater', pt:'um suéter de lã', ico:'🧶', correct:true, item:'wool sweater (suéter de lã)' },
+          { en:'gloves',         pt:'luvas',            ico:'🧤', correct:true, item:'gloves (luvas)' },
+          { en:'a swimsuit',     pt:'um maiô',          ico:'👙', item:'swimsuit (maiô)' },
+          { en:'shorts',         pt:'shorts / bermuda', ico:'🩳', item:'shorts (shorts)' }
+        ],
+        feedback:'Que estilista! 🧤 No frio a gente faz <span class="en-word">put on</span> (vestir / colocar) um <span class="en-word">wool sweater</span> e <span class="en-word">gloves</span>. <span class="en-word">Swimsuit</span> (maiô) e <span class="en-word">shorts</span> ficam guardados para o verão!',
+        wrongFeedback:'Pense no frio de verdade: <span class="en-word">wool</span> é <b>lã</b> (bem quentinha) e <span class="en-word">gloves</span> são as <b>luvas</b>. Já <span class="en-word">swimsuit</span> é maiô e <span class="en-word">shorts</span> é bermuda — esses são de calor!' },
+
+      { id:'q12', type:'multi', topic:'voc9',
+        scene:{ av:'🎤', txt:'O KATSEYE vai subir no palco! Qual é o outfit perfeito para dançar e brilhar?' },
+        prompt:'Choose the stage <span class="en">outfit</span>: <small>(escolha as 4 opções certas)</small>',
+        need:4,
+        options:[
+          { en:'skirt',     pt:'saia',               ico:'👗', correct:true, item:'skirt (saia)' },
+          { en:'sneakers',  pt:'tênis',              ico:'👟', correct:true, item:'sneakers (tênis)' },
+          { en:'earrings',  pt:'brincos',            ico:'💎', correct:true, item:'earrings (brincos)' },
+          { en:'necklace',  pt:'colar',              ico:'📿', correct:true, item:'necklace (colar)' },
+          { en:'uniform',   pt:'uniforme da escola', ico:'🎒', item:'uniform (uniforme)' },
+          { en:'swimsuit',  pt:'maiô',               ico:'👙', item:'swimsuit (maiô)' }
+        ],
+        feedback:'Esse <span class="en-word">outfit</span> é puro <span class="en-word">style</span>! ✨ <span class="en-word">Skirt</span> = saia, <span class="en-word">sneakers</span> = tênis (perfeito para dançar), <span class="en-word">earrings</span> = brincos e <span class="en-word">necklace</span> = colar. O <span class="en-word">uniform</span> é para a escola e o <span class="en-word">swimsuit</span> para a piscina!',
+        wrongFeedback:'Dica de moda: para o palco escolha <span class="en-word">skirt</span> (saia), <span class="en-word">sneakers</span> (tênis), <span class="en-word">earrings</span> (brincos) e <span class="en-word">necklace</span> (colar). <span class="en-word">Uniform</span> = uniforme da escola e <span class="en-word">swimsuit</span> = maiô não combinam com show!' },
+
+      { id:'q13', type:'match', topic:'voc9',
+        scene:{ av:'🧵', txt:'Na sala de costura do estúdio, cada tecido tem um nome em inglês.' },
+        prompt:'Ligue cada <span class="en">fabric</span> (tecido) à sua descrição:',
+        pairs:[
+          { en:'cotton',  pt:'algodão: leve e fresquinho, das camisetas',   item:'cotton (algodão)' },
+          { en:'wool',    pt:'lã: vem da ovelha, bem quentinha',            item:'wool (lã)' },
+          { en:'leather', pt:'couro: usado em jaquetas e botas',            item:'leather (couro)' },
+          { en:'knit',    pt:'tricotar / tecido de tricô',                  item:'knit (tricotar)' },
+          { en:'fabric',  pt:'tecido: o material da roupa',                 item:'fabric (tecido)' }
+        ],
+        feedback:'Você é especialista em <span class="en-word">fabric</span> (tecido)! 🧵 <span class="en-word">Cotton</span> = algodão (as <span class="en-word">shirts</span> e <span class="en-word">pants</span> do dia a dia), <span class="en-word">wool</span> = lã (vem da ovelha), <span class="en-word">leather</span> = couro (a jaqueta da Gwen!), <span class="en-word">knit</span> = tricotar e <span class="en-word">fabric</span> = a palavra geral para tecido.' },
+
+      { id:'q14', type:'gaps', topic:'voc9',
+        scene:{ av:'🏫', txt:'Cada lugar pede uma roupa diferente. Vista as personagens certinho!' },
+        prompt:'Complete com a roupa certa:',
+        rows:[
+          { sent:'At Colégio Damas, students wear a ___ every day.',
+            item:'uniform (uniforme)',
+            opts:[ {t:'uniform', ok:true}, {t:'swimsuit'}, {t:'sweatpants'} ],
+            hint:'Roupa igual para todos os alunos da escola = <span class="en-word">uniform</span> (uniforme).' },
+          { sent:'Moana goes to the beach. She puts on her ___.',
+            item:'swimsuit (maiô)',
+            opts:[ {t:'swimsuit', ok:true}, {t:'tie'}, {t:'uniform'} ],
+            hint:'Para nadar (<em>swim</em>) usamos <span class="en-word">swimsuit</span> = maiô.' },
+          { sent:'Miles has gym class. The most comfortable choice is ___.',
+            item:'sweatpants (calça de moletom)',
+            opts:[ {t:'sweatpants', ok:true}, {t:'a tie'}, {t:'earrings'} ],
+            hint:'<span class="en-word">Sweatpants</span> = calça de moletom, confortável para o esporte. <span class="en-word">Tie</span> = gravata e <span class="en-word">earrings</span> = brincos não servem para a aula de ginástica!' },
+          { sent:'It is cold, so Rapunzel wears long ___ under her skirt.',
+            item:'tights (meia-calça)',
+            opts:[ {t:'tights', ok:true}, {t:'gloves'}, {t:'a belt'} ],
+            hint:'<span class="en-word">Tights</span> = meia-calça, usada por baixo da <span class="en-word">skirt</span> (saia). <span class="en-word">Belt</span> = cinto e <span class="en-word">gloves</span> = luvas.' },
+          { sent:'Under his hoodie, Miles wears a white ___ with a little spider on it.',
+            item:'shirt (camisa / camiseta)',
+            opts:[ {t:'shirt', ok:true}, {t:'skirt'}, {t:'swimsuit'} ],
+            hint:'Muito cuidado para não confundir! <span class="en-word">Shirt</span> = camisa/camiseta e <span class="en-word">skirt</span> = saia. Uma letrinha muda tudo! 👕' },
+          { sent:'It is winter in New York, so Gwen wears long ___, not shorts.',
+            item:'pants (calça comprida)',
+            opts:[ {t:'pants', ok:true}, {t:'gloves'}, {t:'earrings'} ],
+            hint:'<span class="en-word">Pants</span> = calça comprida. No calor seria <span class="en-word">shorts</span> (bermuda).' }
+        ],
+        feedback:'Isso aí! ✨ <span class="en-word">uniform</span> = uniforme, <span class="en-word">swimsuit</span> = maiô, <span class="en-word">sweatpants</span> = calça de moletom, <span class="en-word">tights</span> = meia-calça, <span class="en-word">shirt</span> = camisa e <span class="en-word">pants</span> = calça.' },
+
+      { id:'q15', type:'gaps', topic:'voc9',
+        scene:{ av:'💄', txt:'Última missão: as expressões de moda que caem na prova!' },
+        prompt:'Complete as frases de <span class="en">fashion</span>:',
+        rows:[
+          { sent:'Gwen likes rock clothes. That is her ___ — the way she dresses.',
+            item:'style (estilo)',
+            opts:[ {t:'style', ok:true}, {t:'fabric'}, {t:'net'} ],
+            hint:'<span class="en-word">Style</span> = estilo, o jeito próprio de se vestir. <span class="en-word">Fabric</span> = tecido.' },
+          { sent:'Before the photo, the girls ___ their best clothes.',
+            item:'put on (vestir / colocar)',
+            opts:[ {t:'put on', ok:true}, {t:'take off'}, {t:'knit'} ],
+            hint:'<span class="en-word">Put on</span> = vestir, colocar a roupa. (<em>Take off</em> é o contrário: tirar.)' },
+          { sent:'My dad wears a shirt, a ___ and a belt to work.',
+            item:'tie (gravata)',
+            opts:[ {t:'tie', ok:true}, {t:'swimsuit'}, {t:'tights'} ],
+            hint:'<span class="en-word">Tie</span> = gravata, usada com a <span class="en-word">shirt</span> (camisa) e o <span class="en-word">belt</span> (cinto).' },
+          { sent:'Her pants are loose, so she puts a ___ around her waist.',
+            item:'belt (cinto)',
+            opts:[ {t:'belt', ok:true}, {t:'necklace'}, {t:'tights'} ],
+            hint:'<span class="en-word">Belt</span> = cinto (na cintura). <span class="en-word">Necklace</span> = colar (no pescoço).' },
+          { sent:'All the clothes you wear together are called an ___.',
+            item:'outfit (conjunto / look)',
+            opts:[ {t:'outfit', ok:true}, {t:'ending'}, {t:'creature'} ],
+            hint:'<span class="en-word">Outfit</span> = o look completo, o conjunto de roupas que você veste junto.' },
+          { sent:'Magazines and TV shows about new clothes talk about ___.',
+            item:'fashion (moda)',
+            opts:[ {t:'fashion', ok:true}, {t:'folklore'}, {t:'powers'} ],
+            hint:'<span class="en-word">Fashion</span> = moda. E o seu jeito próprio dentro da moda é o seu <span class="en-word">style</span> (estilo).' }
+        ],
+        feedback:'Você fechou o módulo de <span class="en-word">fashion</span> com chave de ouro! 💄 <span class="en-word">Style</span> = estilo, <span class="en-word">put on</span> = vestir, <span class="en-word">tie</span> = gravata, <span class="en-word">belt</span> = cinto, <span class="en-word">outfit</span> = look e <span class="en-word">fashion</span> = moda.' }
+    ]
+  }
+];
+
+const ALL_QUESTIONS = FASES.flatMap(f => f.questions.map(q => ({...q, fase:f.id})));
+const TOTAL_Q = ALL_QUESTIONS.length;
+
+/* ============================================================
+   6. ESTADO + LOCALSTORAGE
+   ============================================================ */
+const LS_KEY = 'squishy_english_damas_v1';
+const PIN = '1234';
+
+function defaultState(){
+  return { name:'', records:{}, done:[], unlocked:[], streak:0, bestStreak:0,
+           started:null, updated:null, rounds:0 };
+}
+let S = defaultState();
+
+function save(){
+  S.updated = new Date().toISOString();
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); }catch(e){ /* modo privado */ }
+}
+function load(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw){ const o = JSON.parse(raw); if(o && typeof o === 'object') S = Object.assign(defaultState(), o); }
+  }catch(e){ S = defaultState(); }
+}
+
+/* totais de itens avaliados por tópico (para o relatório) */
+const TOPIC_TOTALS = (() => {
+  const t = { voc8:0, fable:0, gram:0, voc9:0 };
+  ALL_QUESTIONS.forEach(q => {
+    const n = q.type === 'match' ? q.pairs.length
+            : q.type === 'gaps'  ? q.rows.length
+            : q.type === 'multi' ? q.options.length : 1;
+    t[q.topic] += n;
+  });
+  return t;
+})();
+
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function recordItem(qid, topic, item, ok){
+  S.records[qid + '::' + item] = { qid, topic, item, firstTry:!!ok };
+  if(ok){ S.streak++; if(S.streak > S.bestStreak) S.bestStreak = S.streak; }
+  else { S.streak = 0; }
+  save();
+}
+function clearQuestionRecords(qid){
+  Object.keys(S.records).forEach(k => { if(S.records[k].qid === qid) delete S.records[k]; });
+}
+const firstTryCount = () => Object.values(S.records).filter(r => r.firstTry).length;
+const faseDone = f => f.questions.every(q => S.done.includes(q.id));
+const faseUnlocked = i => i === 0 || faseDone(FASES[i-1]);
+
+/* ============================================================
+   7. DESBLOQUEIO DE SQUISHIES
+   ============================================================ */
+function unlockRules(){
+  return {
+    alien:   firstTryCount() >= 1,
+    web:     S.bestStreak >= 5,
+    star:    faseDone(FASES[0]),
+    crown:   S.bestStreak >= 10,
+    sweater: faseDone(FASES[1]),
+    shell:   firstTryCount() >= 25,
+    snow:    faseDone(FASES[2]),
+    mask:    S.done.length >= TOTAL_Q
+  };
+}
+function checkUnlocks(){
+  const rules = unlockRules(), fresh = [];
+  SQUISHY_ORDER.forEach(({id}) => {
+    if(rules[id] && !S.unlocked.includes(id)){ S.unlocked.push(id); fresh.push(id); }
+  });
+  if(fresh.length) save();
+  return fresh;
+}
+
+/* ============================================================
+   8. HELPERS DE ANIMAÇÃO / SOM
+   ============================================================ */
+function squish(el, big){
+  if(!el) return;
+  const c = big ? 'is-squishing-big' : 'is-squishing';
+  el.classList.remove(c); void el.offsetWidth; el.classList.add(c);
+  setTimeout(() => el.classList.remove(c), big ? 660 : 380);
+}
+/* todo clique em elemento squishy ganha física + som */
+document.addEventListener('pointerdown', e => {
+  const el = e.target.closest('.sq, .opt, .m-item:not(.matched), .mini:not([disabled]), .phase:not(.locked), .shelf-item:not(.locked), .gear, .bigsquishy');
+  if(!el || el.hasAttribute('disabled')) return;
+  Sound.unlockAudio();
+  const big = el.classList.contains('shelf-item') || el.classList.contains('bigsquishy');
+  squish(el, big);
+  if(big) Sound.squish(); else Sound.click();
+}, {passive:true});
+
+const app = () => document.getElementById('app');
+const overlays = () => document.getElementById('overlays');
+const shuffle = a => { const r = a.slice(); for(let i=r.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [r[i],r[j]]=[r[j],r[i]]; } return r; };
+
+/* ============================================================
+   9. PEÇAS DE INTERFACE REUTILIZÁVEIS
+   ============================================================ */
+function topbarHTML(showProgress){
+  const pct = Math.round(S.done.length / TOTAL_Q * 100);
+  return `
+  <div class="topbar">
+    <div class="logo">Squishy English Club<small>Colégio Damas · 4º ano · Units 8 &amp; 9</small></div>
+    <div class="spacer"></div>
+    ${S.name ? `<span class="pill p-pink">👋 ${esc(S.name)}</span>` : ''}
+    <span class="pill p-blue">🧸 ${S.unlocked.length}/${SQUISHY_ORDER.length}</span>
+    <button class="gear" id="gearBtn" title="Área da professora" aria-label="Área da professora">⚙️</button>
+  </div>
+  ${showProgress ? `
+  <div class="progress-shell"><div class="progress-fill" id="pfill" style="width:${pct}%"></div></div>
+  <div class="progress-label">${S.done.length} de ${TOTAL_Q} desafios · ${pct}%</div>` : ''}`;
+}
+
+function shelfHTML(fresh){
+  fresh = fresh || [];
+  const items = SQUISHY_ORDER.map(({id, unlockText}) => {
+    const sq = SQUISHIES[id], has = S.unlocked.includes(id);
+    return has
+      ? `<button class="shelf-item ${fresh.includes(id)?'fresh':''}" data-sq="${id}" title="${esc(sq.name)} — clique para apertar!">
+           <span class="svgbox">${sq.svg}</span><span class="nm">${esc(sq.name)}</span></button>`
+      : `<div class="shelf-item locked" title="${esc(unlockText)}">
+           <span class="svgbox">${sq.svg}</span><span class="nm">🔒 ${esc(unlockText)}</span></div>`;
+  }).join('');
+  return `
+  <div class="shelf-box">
+    <h3 class="shelf-title">🧸 Minha Prateleira de Squishies
+      <span class="count">${S.unlocked.length}/${SQUISHY_ORDER.length}</span></h3>
+    <div class="shelf" id="shelf">${items}</div>
+    <p class="progress-label" style="text-align:left;margin-top:8px">
+      Aperte os squishies desbloqueados quando quiser! 💕</p>
+  </div>`;
+}
+
+function bindShelf(root){
+  (root || document).querySelectorAll('[data-sq]').forEach(b => {
+    b.addEventListener('click', () => {
+      const sq = SQUISHIES[b.dataset.sq];
+      toast(`${sq.name} — ${sq.hint}`);
+    });
+  });
+}
+
+let toastTimer = null;
+function toast(msg){
+  let el = document.getElementById('toast');
+  if(!el){
+    el = document.createElement('div'); el.id = 'toast';
+    el.style.cssText = 'position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:90;'+
+      'background:#fffdfe;border:4px solid #fff;border-radius:22px;padding:12px 20px;font-weight:800;'+
+      'font-size:.92rem;color:#4a3b52;box-shadow:0 10px 0 rgba(122,83,214,.18),0 16px 30px rgba(122,83,214,.2);'+
+      'max-width:86vw;text-align:center;';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.animation = 'popIn .45s cubic-bezier(.34,1.56,.64,1) both';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { el.style.animation = ''; el.remove(); }, 2600);
+}
+
+/* ============================================================
+   10. TELA 1 - BOAS-VINDAS
+   ============================================================ */
+function screenWelcome(){
+  const minis = ['alien','web','star','sweater','snow']
+    .map(id => `<span class="squishy-mini">${SQUISHIES[id].svg}</span>`).join('');
+  app().innerHTML = `
+  ${topbarHTML(false)}
+  <div class="card welcome">
+    <div class="hero-row">${minis}</div>
+    <h1>Revisão Squishy de Inglês! 🧸✨</h1>
+    <p class="sub">Uma jornada fofinha com Stitch, Rapunzel, Moana, Elsa, o Aranhaverso e o KATSEYE
+      para revisar as <b>Units 8 e 9</b> antes da prova.</p>
+    <label for="nameInput" style="display:block;font-weight:800;margin-bottom:8px;color:#7b6a84">
+      Qual é o seu nome?</label>
+    <input class="name-field" id="nameInput" maxlength="22" placeholder="digite aqui 💕"
+      value="${esc(S.name)}" autocomplete="off">
+    <div style="margin-top:20px">
+      <button class="sq primary big" id="startBtn">Começar a jornada! 🚀</button>
+    </div>
+    ${S.done.length ? `<p class="progress-label" style="text-align:center;margin-top:14px">
+      Você já tem ${S.done.length} de ${TOTAL_Q} desafios salvos. Pode continuar de onde parou! 💾</p>` : ''}
+    <div class="badge-row">
+      <span class="badge">🌲 Fase 1 · Fábulas</span>
+      <span class="badge">🕷️ Fase 2 · Should / Have to</span>
+      <span class="badge">👗 Fase 3 · Fashion</span>
+    </div>
+  </div>
+  <p class="footer-note">Feito com muito carinho para a revisão de Inglês · Colégio Damas (Recife)</p>`;
+
+  const input = document.getElementById('nameInput');
+  const go = () => {
+    const v = input.value.trim();
+    if(!v){ input.focus(); squish(input); toast('Escreve seu nome primeiro! 💕'); return; }
+    S.name = v;
+    if(!S.started) S.started = new Date().toISOString();
+    save(); Sound.fanfare(); screenHub();
+  };
+  document.getElementById('startBtn').addEventListener('click', go);
+  input.addEventListener('keydown', e => { if(e.key === 'Enter') go(); });
+  input.focus();
+  wireGear();
+}
+
+/* ============================================================
+   11. TELA 2 - MAPA DAS FASES + PRATELEIRA
+   ============================================================ */
+function screenHub(fresh){
+  const phases = FASES.map((f, i) => {
+    const unlocked = faseUnlocked(i), done = faseDone(f);
+    const nDone = f.questions.filter(q => S.done.includes(q.id)).length;
+    const state = done ? '✅ Completa' : unlocked ? `${nDone}/${f.questions.length}` : '🔒';
+    return `
+    <button class="phase ${f.cardClass} ${unlocked?'':'locked'}" data-fase="${i}" ${unlocked?'':'disabled'}>
+      <span class="emoji">${f.emoji}</span>
+      <span class="info">
+        <h3>Fase ${f.id} · ${esc(f.title)}</h3>
+        <p>${f.sub}${unlocked?'':' · termine a fase anterior'}</p>
+      </span>
+      <span class="state ${done?'done':''}">${state}</span>
+    </button>`;
+  }).join('');
+
+  const allDone = S.done.length >= TOTAL_Q;
+  app().innerHTML = `
+  ${topbarHTML(true)}
+  <div class="card">
+    <h2 style="font-family:var(--font-fun);margin:0 0 4px;font-size:1.4rem">
+      Oi, ${esc(S.name || 'estrelinha')}! Escolha sua missão 🗺️</h2>
+    <p style="font-weight:700;color:#7b6a84;margin:0 0 14px;font-size:.92rem">
+      ${allDone ? 'Você completou tudo! Pode repetir as fases para treinar mais. 🏆'
+                : 'Complete uma fase para abrir a próxima e ganhar squishies novos!'}</p>
+    <div class="phase-grid">${phases}</div>
+    ${allDone ? `<div style="text-align:center;margin-top:16px">
+      <button class="sq butter" id="finalBtn">Ver meu boletim fofo 🏆</button></div>` : ''}
+    ${shelfHTML(fresh)}
+  </div>
+  <p class="footer-note">Seu progresso é salvo automaticamente neste navegador 💾</p>`;
+
+  document.querySelectorAll('[data-fase]').forEach(b => {
+    b.addEventListener('click', () => {
+      const i = +b.dataset.fase;
+      if(!faseUnlocked(i)) return;
+      setTimeout(() => screenQuiz(i, 0), 180);
+    });
+  });
+  const fb = document.getElementById('finalBtn');
+  if(fb) fb.addEventListener('click', () => screenFinal());
+  bindShelf(); wireGear();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ============================================================
+   12. TELA 3 - QUIZ
+   ============================================================ */
+function screenQuiz(faseIdx, qIdx){
+  const fase = FASES[faseIdx];
+  if(qIdx >= fase.questions.length) return screenFaseEnd(faseIdx);
+
+  const q = fase.questions[qIdx];
+  const globalNum = ALL_QUESTIONS.findIndex(x => x.id === q.id) + 1;
+  clearQuestionRecords(q.id);            /* refazer = medir de novo */
+  S.done = S.done.filter(id => id !== q.id);
+  save();
+
+  const topic = TOPICS[q.topic];
+  app().innerHTML = `
+  ${topbarHTML(true)}
+  <div class="card" id="qcard">
+    <div class="qhead">
+      <span class="qtag ${topic.cls}">${fase.emoji} ${topic.label}</span>
+      <span class="qnum">Questão ${globalNum} de ${TOTAL_Q}</span>
+    </div>
+    ${q.story ? `<div class="story">${q.story}</div>` : ''}
+    ${q.scene ? `<div class="scene"><span class="av">${q.scene.av}</span>
+       <span class="txt">${q.scene.txt}</span></div>` : ''}
+    <p class="question">${q.prompt}</p>
+    <div id="body"></div>
+    <div id="fb"></div>
+    <div class="qfoot">
+      <button class="sq ghost" id="backBtn">⬅ Mapa</button>
+      <button class="sq mint" id="nextBtn" style="display:none">
+        ${qIdx + 1 >= fase.questions.length ? 'Terminar a fase 🎉' : 'Próxima ➡'}</button>
+    </div>
+  </div>`;
+
+  document.getElementById('backBtn').addEventListener('click', () => screenHub());
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    const newly = checkUnlocks();
+    if(newly.length) showUnlockQueue(newly, () => screenQuiz(faseIdx, qIdx + 1));
+    else screenQuiz(faseIdx, qIdx + 1);
+  });
+
+  const renderers = { mc:renderMC, match:renderMatch, gaps:renderGaps, multi:renderMulti };
+  renderers[q.type](q, document.getElementById('body'), () => finishQuestion(q));
+  wireGear();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function finishQuestion(q){
+  if(!S.done.includes(q.id)) S.done.push(q.id);
+  save();
+  Sound.correct();
+  showFeedback(true, q.feedback);
+  const nb = document.getElementById('nextBtn');
+  nb.style.display = ''; squish(nb, true);
+  const pct = Math.round(S.done.length / TOTAL_Q * 100);
+  const pf = document.getElementById('pfill');
+  if(pf) pf.style.width = pct + '%';
+  const pl = document.querySelector('.progress-label');
+  if(pl) pl.textContent = `${S.done.length} de ${TOTAL_Q} desafios · ${pct}%`;
+}
+
+function showFeedback(good, html){
+  document.getElementById('fb').innerHTML = `
+  <div class="feedback ${good?'good':'bad'}">
+    <div class="fh">${good?'🌟 Muito bem!':'🤍 Quase! Tenta de novo:'}</div>
+    <div>${html}</div>
+  </div>`;
+}
+function showTip(topicKey){
+  const tips = {
+    gram:`<div class="tip"><div class="th">🔍 Detective Tip</div>
+      <ul>
+        <li><code>should</code> / <code>shouldn’t</code> = <b>conselho, sugestão, recomendação</b>.
+            É o que seria <b>bom</b> (ou ruim) fazer. Em português: <em>deveria / não deveria</em>.<br>
+            <em>You <b>should</b> drink water.</em> = Você deveria beber água.</li>
+        <li><code>have to</code> = <b>obrigação, regra, dever</b>. Não tem escolha!
+            Em português: <em>tem que / precisa</em>.<br>
+            <em>Students <b>have to</b> wear a uniform.</em> = Os alunos têm que usar uniforme.</li>
+      </ul>
+      <p style="margin:9px 0 0">💡 <b>Truque:</b> se a frase fala de <b>regra, lei ou contrato</b> → <code>have to</code>.
+      Se é só uma <b>dica boa de amigo</b> → <code>should</code>.</p></div>`
+  };
+  if(!tips[topicKey]) return;
+  document.getElementById('fb').insertAdjacentHTML('beforeend', tips[topicKey]);
+}
+
+/* ---------- 12a. MÚLTIPLA ESCOLHA ---------- */
+function renderMC(q, box, done){
+  let attempts = 0;
+  const keys = ['A','B','C','D','E'];
+  box.innerHTML = `<div class="options">${
+    shuffle(q.options.map((o, i) => ({...o, i}))).map((o, n) => `
+      <button class="opt" data-i="${o.i}">
+        <span class="key">${keys[n]}</span>
+        <span class="lbl">${o.en}${o.pt?`<span class="pt">${o.pt}</span>`:''}</span>
+      </button>`).join('')}</div>`;
+
+  box.querySelectorAll('.opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(btn.disabled) return;
+      const o = q.options[+btn.dataset.i];
+      if(o.correct){
+        recordItem(q.id, q.topic, q.item, attempts === 0);
+        btn.classList.add('correct');
+        box.querySelectorAll('.opt').forEach(b => { b.disabled = true; if(b !== btn) b.classList.add('faded'); });
+        done();
+      } else {
+        if(attempts === 0) recordItem(q.id, q.topic, q.item, false);
+        attempts++;
+        btn.classList.add('wrong'); btn.disabled = true;
+        Sound.wrong();
+        showFeedback(false, q.wrongFeedback || 'Essa não é a palavra certa. Leia a frase devagar e tente outra opção! 💛');
+        if(q.tipTopic) showTip(q.tipTopic);
+      }
+    });
+  });
+}
+
+/* ---------- 12b. LIGAR COLUNAS (match) ---------- */
+function renderMatch(q, box, done){
+  const lefts = shuffle(q.pairs), rights = shuffle(q.pairs);
+  const wrongOnce = new Set();
+  let sel = null, matched = 0;
+
+  box.innerHTML = `
+  <div class="match-wrap">
+    <div class="match-col"><h5>English</h5>${
+      lefts.map(p => `<button class="m-item en" data-en="${esc(p.en)}">${esc(p.en)}</button>`).join('')}</div>
+    <div class="match-col"><h5>Português</h5>${
+      rights.map(p => `<button class="m-item" data-for="${esc(p.en)}">${esc(p.pt)}</button>`).join('')}</div>
+  </div>
+  <p class="progress-label" style="text-align:left;margin-top:10px" id="mcount">0 de ${q.pairs.length} ligados</p>`;
+
+  const upd = () => document.getElementById('mcount').textContent = `${matched} de ${q.pairs.length} ligados`;
+
+  box.querySelectorAll('.m-item.en').forEach(b => b.addEventListener('click', () => {
+    if(b.classList.contains('matched')) return;
+    box.querySelectorAll('.m-item.en').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel'); sel = b;
+  }));
+
+  box.querySelectorAll('.m-item[data-for]').forEach(b => b.addEventListener('click', () => {
+    if(b.classList.contains('matched')) return;
+    if(!sel){ toast('Escolha primeiro uma palavra em inglês! 👉'); return; }
+    const en = sel.dataset.en, pair = q.pairs.find(p => p.en === en);
+    if(b.dataset.for === en){
+      recordItem(q.id, q.topic, pair.item, !wrongOnce.has(en));
+      sel.classList.remove('sel'); sel.classList.add('matched'); b.classList.add('matched');
+      Sound.pop(); sel = null; matched++; upd();
+      if(matched === q.pairs.length) done();
+    } else {
+      wrongOnce.add(en);
+      const other = q.pairs.find(p => p.en === b.dataset.for);
+      recordItem(q.id, q.topic, pair.item, false);
+      b.classList.add('bad'); Sound.wrong();
+      setTimeout(() => b.classList.remove('bad'), 480);
+      showFeedback(false, `<span class="en-word">${esc(en)}</span> não significa &ldquo;${esc(other.pt)}&rdquo;.
+        Tente outra ligação — leia com calma e pense na palavra! 💛`);
+    }
+  }));
+}
+
+/* ---------- 12c. LACUNAS (gaps) ---------- */
+function renderGaps(q, box, done){
+  let solved = 0;
+  const sentHTML = r => r.sent.includes('___')
+    ? r.sent.replace('___', '<span class="blank">______</span>')
+    : r.sent + ' &nbsp;<span class="blank">______</span>';
+  box.innerHTML = q.rows.map((r, i) => `
+    <div class="gap-row" data-row="${i}">
+      <div class="sent">${sentHTML(r)}</div>
+      <div class="mini-opts">${shuffle(r.opts.map((o,j)=>({...o,j})))
+        .map(o => `<button class="mini" data-j="${o.j}">${o.t}</button>`).join('')}</div>
+      <div class="pt-hint" style="display:none"></div>
+    </div>`).join('');
+
+  box.querySelectorAll('.gap-row').forEach(row => {
+    const i = +row.dataset.row, r = q.rows[i];
+    let attempts = 0;
+    row.querySelectorAll('.mini').forEach(btn => btn.addEventListener('click', () => {
+      if(btn.disabled || row.classList.contains('solved')) return;
+      const o = r.opts[+btn.dataset.j];
+      if(o.ok){
+        recordItem(q.id, q.topic, r.item, attempts === 0);
+        btn.classList.add('ok'); row.classList.add('solved');
+        row.querySelectorAll('.mini').forEach(x => x.disabled = true);
+        const bl = row.querySelector('.blank');
+        if(bl){ bl.textContent = o.t; bl.classList.add('filled'); }
+        Sound.pop();
+        solved++;
+        if(solved === q.rows.length) done();
+      } else {
+        if(attempts === 0) recordItem(q.id, q.topic, r.item, false);
+        attempts++;
+        btn.classList.add('no'); btn.disabled = true; Sound.wrong();
+        const h = row.querySelector('.pt-hint');
+        h.style.display = ''; h.innerHTML = '💡 ' + r.hint;
+        showFeedback(false, 'Leia a dica 💡 que apareceu embaixo da frase e escolha outra opção!');
+        if(q.tipTopic) showTip(q.tipTopic);
+      }
+    }));
+  });
+}
+
+/* ---------- 12d. MULTISSELEÇÃO (stylist challenge) ---------- */
+function renderMulti(q, box, done){
+  let attempts = 0;
+  const picked = new Set();
+  box.innerHTML = `
+  <div class="options grid2">${shuffle(q.options.map((o,i)=>({...o,i})))
+    .map(o => `<button class="opt chip" data-i="${o.i}">
+        <span class="ico">${o.ico||'✨'}</span>
+        <span class="lbl">${o.en}${o.pt?`<span class="pt">${o.pt}</span>`:''}</span>
+      </button>`).join('')}</div>
+  <div style="text-align:center;margin-top:14px">
+    <button class="sq lilac" id="checkBtn">Conferir o look 👗</button></div>`;
+
+  const chips = [...box.querySelectorAll('.opt.chip')];
+  chips.forEach(c => c.addEventListener('click', () => {
+    if(c.disabled) return;
+    const i = +c.dataset.i;
+    if(picked.has(i)){ picked.delete(i); c.classList.remove('picked'); }
+    else { picked.add(i); c.classList.add('picked'); }
+  }));
+
+  document.getElementById('checkBtn').addEventListener('click', () => {
+    const need = q.options.filter(o => o.correct).length;
+    if(picked.size !== need){ toast(`Escolha exatamente ${need} peças! 👗`); Sound.wrong(); return; }
+    const perfect = q.options.every((o, i) => !!o.correct === picked.has(i));
+    if(perfect){
+      q.options.forEach(o => recordItem(q.id, q.topic, o.item, attempts === 0));
+      chips.forEach(c => { c.disabled = true; c.classList.remove('picked');
+        if(q.options[+c.dataset.i].correct) c.classList.add('correct');
+        else c.classList.add('faded'); });
+      document.getElementById('checkBtn').remove();
+      done();
+    } else {
+      if(attempts === 0){
+        q.options.forEach((o, i) => recordItem(q.id, q.topic, o.item, !!o.correct === picked.has(i)));
+      }
+      attempts++;
+      Sound.wrong();
+      chips.forEach(c => {
+        const i = +c.dataset.i, o = q.options[i];
+        if(picked.has(i) && !o.correct){ c.classList.add('wrong'); c.classList.remove('picked'); }
+      });
+      picked.forEach(i => { if(!q.options[i].correct) picked.delete(i); });
+      setTimeout(() => chips.forEach(c => c.classList.remove('wrong')), 600);
+      showFeedback(false, q.wrongFeedback || 'Algumas peças não combinam com essa situação. Tente de novo! 💛');
+    }
+  });
+}
+
+/* ============================================================
+   13. POPUP DE SQUISHY DESBLOQUEADO
+   ============================================================ */
+function showUnlockQueue(ids, after){
+  if(!ids.length){ after && after(); return; }
+  const id = ids[0], sq = SQUISHIES[id];
+  Sound.unlock();
+  overlays().innerHTML = `
+  <div class="overlay" id="ov">
+    <div class="modal">
+      <div class="sparkles">
+        <span style="left:6%;top:6px">✨</span><span style="right:8%;top:14px">⭐</span>
+        <span style="left:16%;top:96px">💖</span><span style="right:14%;top:104px">✨</span>
+      </div>
+      <p style="font-weight:800;color:#e5569b;margin:0">NOVO SQUISHY DESBLOQUEADO!</p>
+      <h3>${esc(sq.name)}</h3>
+      <div class="bigsquishy" id="bigsq">${sq.svg}</div>
+      <p>${esc(sq.hint)}<br><small>Aperte o squishy para ouvir o pop! 🫧</small></p>
+      <button class="sq primary" id="okSq">Guardar na prateleira 🧸</button>
+    </div>
+  </div>`;
+  document.getElementById('bigsq').addEventListener('click', () => {});
+  document.getElementById('okSq').addEventListener('click', () => {
+    overlays().innerHTML = '';
+    showUnlockQueue(ids.slice(1), after);
+  });
+}
+
+/* ============================================================
+   14. FIM DE FASE
+   ============================================================ */
+function screenFaseEnd(faseIdx){
+  const fase = FASES[faseIdx];
+  const newly = checkUnlocks();
+  Sound.fanfare();
+
+  const stats = faseStats(fase);
+  const isLast = faseIdx === FASES.length - 1;
+  const allDone = S.done.length >= TOTAL_Q;
+
+  app().innerHTML = `
+  ${topbarHTML(true)}
+  <div class="card result">
+    <h2>Fase ${fase.id} completa! ${fase.emoji}🎉</h2>
+    <p style="font-weight:700;color:#7b6a84;margin:0">
+      Parabéns, ${esc(S.name || 'estrelinha')}! Você terminou <b>${esc(fase.title)}</b>.</p>
+    <div class="score-ring" style="--pc:${stats.pct}">
+      <div class="inner"><b>${stats.pct}%</b><span>DE PRIMEIRA</span></div>
+    </div>
+    <p style="font-weight:800;color:#7b6a84;margin:0 0 6px">
+      ${stats.ok} de ${stats.total} itens acertados na primeira tentativa</p>
+    <p style="font-weight:700;color:#7b6a84;font-size:.9rem">🔥 Melhor sequência: ${S.bestStreak} acertos seguidos</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+      <button class="sq ghost" id="againBtn">Refazer a fase 🔁</button>
+      ${isLast && allDone
+        ? `<button class="sq butter" id="finalBtn2">Ver meu boletim 🏆</button>`
+        : `<button class="sq primary" id="nextFase">${isLast?'Voltar ao mapa 🗺️':'Próxima fase ➡'}</button>`}
+    </div>
+    ${shelfHTML(newly)}
+  </div>`;
+
+  document.getElementById('againBtn').addEventListener('click', () => screenQuiz(faseIdx, 0));
+  const nf = document.getElementById('nextFase');
+  if(nf) nf.addEventListener('click', () => {
+    if(isLast) screenHub();
+    else if(faseUnlocked(faseIdx+1)) screenQuiz(faseIdx+1, 0);
+    else screenHub();
+  });
+  const f2 = document.getElementById('finalBtn2');
+  if(f2) f2.addEventListener('click', () => screenFinal());
+
+  bindShelf(); wireGear();
+  if(newly.length) showUnlockQueue(newly, null);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function faseStats(fase){
+  const ids = fase.questions.map(q => q.id);
+  const rs = Object.values(S.records).filter(r => ids.includes(r.qid));
+  const ok = rs.filter(r => r.firstTry).length;
+  return { ok, total:rs.length, pct: rs.length ? Math.round(ok/rs.length*100) : 0 };
+}
+function topicStats(){
+  const out = {};
+  Object.keys(TOPICS).forEach(k => {
+    const rs = Object.values(S.records).filter(r => r.topic === k);
+    const ok = rs.filter(r => r.firstTry).length;
+    out[k] = { ok, answered:rs.length, total:TOPIC_TOTALS[k],
+               pct: rs.length ? Math.round(ok/rs.length*100) : 0,
+               missed: rs.filter(r => !r.firstTry).map(r => r.item) };
+  });
+  return out;
+}
+
+/* ============================================================
+   15. BOLETIM FINAL DA ALUNA
+   ============================================================ */
+function screenFinal(){
+  const ts = topicStats();
+  const all = Object.values(S.records);
+  const ok = all.filter(r => r.firstTry).length;
+  const pct = all.length ? Math.round(ok/all.length*100) : 0;
+  const msg = pct >= 90 ? 'Você está prontíssima para a prova! 🌟'
+            : pct >= 70 ? 'Muito bom! Só falta treinar as palavrinhas marcadas. 💪'
+            : 'Boa! Vamos repetir as fases para fixar o vocabulário. Você consegue! 💕';
+
+  const bars = Object.entries(ts).map(([k,v]) => `
+    <div class="tbar">
+      <div class="tl"><span>${TOPICS[k].label}</span><span>${v.pct}%</span></div>
+      <div class="tt"><div class="tf" style="width:${v.pct}%;background:${TOPICS[k].color}"></div></div>
+    </div>`).join('');
+
+  const toReview = [...new Set(all.filter(r => !r.firstTry).map(r => r.item))];
+
+  app().innerHTML = `
+  ${topbarHTML(true)}
+  <div class="card result">
+    <h2>Boletim Fofo de ${esc(S.name || 'Estrelinha')} 🏆</h2>
+    <div class="score-ring" style="--pc:${pct}">
+      <div class="inner"><b>${pct}%</b><span>DE PRIMEIRA</span></div>
+    </div>
+    <p style="font-weight:800;color:#7b6a84;margin:0 0 4px">${ok} de ${all.length} itens de primeira tentativa</p>
+    <p style="font-weight:700;color:#7b6a84;font-size:.95rem">${msg}</p>
+    <div class="topic-bars">${bars}</div>
+    ${toReview.length ? `
+      <h4 style="font-family:var(--font-fun);margin:18px 0 8px;font-size:1.05rem;text-align:left">
+        📌 Palavras e regras para dar uma olhadinha antes da prova:</h4>
+      <ul class="miss-list">${toReview.map(i => `<li>${esc(i)}</li>`).join('')}</ul>`
+    : `<p style="font-weight:800;color:#1f9c6a;margin-top:14px">
+        🎉 Você acertou tudo de primeira! Que orgulho!</p>`}
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px">
+      <button class="sq ghost" id="hubBtn">Voltar ao mapa 🗺️</button>
+      <button class="sq primary" id="redoBtn">Treinar tudo de novo 🔁</button>
+    </div>
+    ${shelfHTML()}
+  </div>`;
+
+  document.getElementById('hubBtn').addEventListener('click', () => screenHub());
+  document.getElementById('redoBtn').addEventListener('click', () => {
+    S.rounds = (S.rounds||0) + 1; S.done = []; S.records = {}; S.streak = 0; save();
+    toast('Simulado reiniciado! Os squishies ficam com você 🧸');
+    screenHub();
+  });
+  bindShelf(); wireGear();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ============================================================
+   16. ÁREA SECRETA DA PROFESSORA (senha 1234)
+   ============================================================ */
+function wireGear(){
+  const g = document.getElementById('gearBtn');
+  if(g) g.addEventListener('click', openTeacherLock);
+}
+
+function openTeacherLock(){
+  overlays().innerHTML = `
+  <div class="overlay teacher" id="ov">
+    <div class="modal lockbox">
+      <h3>🔐 Área da Professora</h3>
+      <p>Digite a senha de acesso para ver o relatório de desempenho.</p>
+      <input class="pin-field" id="pinInput" type="password" inputmode="numeric"
+        maxlength="4" placeholder="••••" autocomplete="off">
+      <p id="pinMsg" style="color:#e2573c;min-height:20px;margin:10px 0 0;font-size:.85rem"></p>
+      <div class="t-actions">
+        <button class="sq ghost" id="pinCancel">Fechar</button>
+        <button class="sq lilac" id="pinOk">Entrar</button>
+      </div>
+    </div>
+  </div>`;
+  const inp = document.getElementById('pinInput');
+  const tryPin = () => {
+    if(inp.value === PIN){ Sound.correct(); openTeacherReport(); }
+    else { Sound.wrong(); document.getElementById('pinMsg').textContent = 'Senha incorreta. Tente novamente.';
+      inp.value = ''; inp.focus(); squish(inp); }
+  };
+  document.getElementById('pinOk').addEventListener('click', tryPin);
+  document.getElementById('pinCancel').addEventListener('click', () => overlays().innerHTML = '');
+  inp.addEventListener('keydown', e => { if(e.key === 'Enter') tryPin(); });
+  inp.focus();
+}
+
+function openTeacherReport(){
+  const ts = topicStats();
+  const all = Object.values(S.records);
+  const okAll = all.filter(r => r.firstTry).length;
+  const pctAll = all.length ? Math.round(okAll/all.length*100) : 0;
+  const upd = S.updated ? new Date(S.updated).toLocaleString('pt-BR') : '—';
+  const fmt = d => d ? new Date(d).toLocaleString('pt-BR') : '—';
+
+  const blocks = Object.entries(ts).map(([k,v]) => {
+    const missed = [...new Set(v.missed)];
+    return `
+    <h4>${TOPICS[k].label} — <span style="color:${TOPICS[k].color}">${v.pct}%</span>
+      <small style="color:#7b6a84;font-weight:700">(${v.ok}/${v.answered} de primeira · ${v.total} itens no total)</small></h4>
+    <div class="tbar" style="margin-bottom:8px">
+      <div class="tt"><div class="tf" style="width:${v.pct}%;background:${TOPICS[k].color}"></div></div>
+    </div>
+    <ul class="miss-list">${
+      v.answered === 0 ? `<li class="none" style="background:#f3eefa;border-color:#ddd3e4;color:#7b6a84">
+        ainda não respondido</li>`
+      : missed.length ? missed.map(m => `<li>${esc(m)}</li>`).join('')
+      : `<li class="none">✓ nenhum erro de primeira tentativa</li>`}</ul>`;
+  }).join('');
+
+  const faseRows = FASES.map(f => {
+    const st = faseStats(f), nDone = f.questions.filter(q => S.done.includes(q.id)).length;
+    return `<span class="pill">${f.emoji} Fase ${f.id}: ${nDone}/${f.questions.length} · ${st.pct}%</span>`;
+  }).join('');
+
+  overlays().innerHTML = `
+  <div class="overlay teacher" id="ov">
+    <div class="modal treport">
+      <h3>📊 Relatório de Desempenho</h3>
+      <div class="meta">
+        <span class="pill p-pink">👧 ${esc(S.name || '—')}</span>
+        <span class="pill p-blue">✅ ${pctAll}% geral (${okAll}/${all.length})</span>
+        <span class="pill">🧸 ${S.unlocked.length}/${SQUISHY_ORDER.length} squishies</span>
+        <span class="pill">🔥 melhor sequência: ${S.bestStreak}</span>
+      </div>
+      <div class="meta">${faseRows}</div>
+      <p style="font-size:.78rem;font-weight:700;color:#7b6a84;margin:4px 0 0">
+        Início: ${fmt(S.started)} · Última atividade: ${upd} · Simulados reiniciados: ${S.rounds||0}</p>
+      <p style="font-size:.82rem;font-weight:700;color:#7b6a84;background:#f6f1fb;border-radius:14px;padding:10px 12px;margin:12px 0 0">
+        ℹ️ As porcentagens consideram apenas a <b>primeira tentativa</b> de cada item.
+        As etiquetas vermelhas são exatamente as palavras/regras que a aluna errou de primeira — use-as como roteiro da revisão final.</p>
+      ${blocks}
+      <div class="t-actions">
+        <button class="sq ghost" id="tClose">Fechar</button>
+        <button class="sq blue" id="tCopy">Copiar relatório 📋</button>
+        <button class="sq danger" id="tReset">Resetar dados 🗑️</button>
+      </div>
+    </div>
+  </div>`;
+
+  document.getElementById('tClose').addEventListener('click', () => overlays().innerHTML = '');
+
+  document.getElementById('tCopy').addEventListener('click', () => {
+    let txt = `RELATÓRIO - Revisão de Inglês (Units 8 e 9)\nAluna: ${S.name||'—'}\n`+
+      `Desempenho geral (1ª tentativa): ${pctAll}% (${okAll}/${all.length})\n`+
+      `Melhor sequência: ${S.bestStreak} · Squishies: ${S.unlocked.length}/${SQUISHY_ORDER.length}\n`+
+      `Última atividade: ${upd}\n\n`;
+    Object.entries(ts).forEach(([k,v]) => {
+      const missed = [...new Set(v.missed)];
+      txt += `${TOPICS[k].label}: ${v.pct}% (${v.ok}/${v.answered} de ${v.total} itens)\n`;
+      txt += missed.length ? `  Errou de 1ª: ${missed.join('; ')}\n\n` : `  Sem erros de 1ª tentativa\n\n`;
+    });
+    const done = () => toast('Relatório copiado! 📋');
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(() => fallbackCopy(txt, done));
+    } else fallbackCopy(txt, done);
+  });
+
+  document.getElementById('tReset').addEventListener('click', () => {
+    const m = document.querySelector('.treport');
+    m.insertAdjacentHTML('beforeend', `
+      <div class="feedback bad" id="confirmBox">
+        <div class="fh">⚠️ Resetar todos os dados?</div>
+        <div>Isso apaga o nome, as porcentagens, os erros registrados e os squishies desbloqueados
+          deste navegador. Não dá para desfazer.</div>
+        <div class="t-actions">
+          <button class="sq ghost" id="cNo">Cancelar</button>
+          <button class="sq danger" id="cYes">Sim, resetar tudo</button>
+        </div>
+      </div>`);
+    document.getElementById('cNo').addEventListener('click', () => document.getElementById('confirmBox').remove());
+    document.getElementById('cYes').addEventListener('click', () => {
+      S = defaultState();
+      try{ localStorage.removeItem(LS_KEY); }catch(e){}
+      overlays().innerHTML = '';
+      toast('Dados resetados. Pronto para um novo simulado! ✨');
+      screenWelcome();
+    });
+  });
+}
+
+function fallbackCopy(txt, cb){
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); cb(); }catch(e){ toast('Não foi possível copiar.'); }
+  ta.remove();
+}
+
+/* fecha overlay clicando fora do cartão */
+document.addEventListener('click', e => {
+  if(e.target.id === 'ov' && !e.target.querySelector('#pinInput, #bigsq')) overlays().innerHTML = '';
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') overlays().innerHTML = '';
+});
+
+/* ============================================================
+   17. BOOT
+   ============================================================ */
+load();
+if(S.name && S.done.length) screenHub(); else screenWelcome();
+</script>
+</body>
+</html>
